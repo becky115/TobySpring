@@ -1,21 +1,22 @@
 package ex1.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ex1.domain.User;
-
-
-
-public class UserDao1_2 {
+/**
+ * 상속을 통한 확장 방법이 제공되는 UserDao5
+ * @author ejlee
+ *
+ */
+public abstract class UserDao5 {
 	
 	public void add(User user) throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
 		
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
+		Connection c = getConnection();
+		
 		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 		ps.setString(1, user.getId());
 		ps.setString(2, user.getName());
@@ -26,11 +27,10 @@ public class UserDao1_2 {
 		ps.close();
 		c.close();
 	}
-	
+
 	public void delete(String id) throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
+		Connection c = getConnection();
 		
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
 		ps.setString(1, id);
 		
@@ -40,10 +40,10 @@ public class UserDao1_2 {
 		c.close();
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
+	protected User get(String id) throws ClassNotFoundException, SQLException{
+		System.out.println("UserDao5: "+ id);
+		Connection c = getConnection();
 		
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);
 
@@ -62,21 +62,6 @@ public class UserDao1_2 {
 		return user;
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		UserDao1_2 dao = new UserDao1_2();
-		dao.delete("id1");
-		
-		User user = new User();
-		user.setId("id1");
-		user.setName("name1");
-		user.setPassword("pwd1");
-		
-		dao.add(user);
-		
-		System.out.println("등록성공:: "+ user.getId());
-		
-		User user2 = dao.get(user.getId());
-		System.out.println(user2.toString());
-	}
-
+	public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
 }
+
