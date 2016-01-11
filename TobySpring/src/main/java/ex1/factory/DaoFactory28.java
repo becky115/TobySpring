@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import ex1.db.ConnectionMaker8;
-import ex1.db.ProductionDBConnectionMaker;
+import ex1.db.LocalDBConnectionMaker;
 
 /**
- * 운영용 ConnectionMaker 생성코드
+ * 리스트 1-28 개발용 ConnectionMaker 생성코드
  * @author ejlee
  *
  */
@@ -16,6 +16,6 @@ public class DaoFactory28 {
 	
 	@Bean
 	public ConnectionMaker8 connectionMaker(){
-		return new ProductionDBConnectionMaker();
+		return new LocalDBConnectionMaker();
 	}
 }

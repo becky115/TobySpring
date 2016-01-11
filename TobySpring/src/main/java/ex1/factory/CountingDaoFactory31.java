@@ -9,7 +9,7 @@ import ex1.db.CountingConnectionMaker30;
 import ex1.db.DConnctionMaker9;
 
 /**
- * CountingConnectionMaker 의존관계가 추가된 DI설정용 클래스
+ * 리스트 1-31 CountingConnectionMaker 의존관계가 추가된 DI설정용 클래스
  * @author ejlee
  *
  */

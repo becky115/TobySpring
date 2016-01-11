@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * 연결횟수 카운팅이 있는 클래스
+ * 리스트 1-30 연결횟수 카운팅이 있는 클래스
  * @author eunji
  *
  */

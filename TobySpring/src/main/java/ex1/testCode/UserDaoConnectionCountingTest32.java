@@ -8,7 +8,12 @@ import ex1.dao.UserDao11;
 import ex1.db.CountingConnectionMaker30;
 import ex1.factory.CountingDaoFactory31;
 
-public class UserDaoConnectionCountingTest {
+/**
+ * 리스트 1-32 CountingConnectionMaker에 대한 테스트 클래스
+ * @author eunji
+ *
+ */
+public class UserDaoConnectionCountingTest32 {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
@@ -24,10 +29,6 @@ public class UserDaoConnectionCountingTest {
 		//
 		CountingConnectionMaker30 ccm = context.getBean("connectionMaker", CountingConnectionMaker30.class);
 		System.out.println(ccm.getCounter());
-		
-		
-
-		
 		
 	}
 }
