@@ -1,7 +1,11 @@
-package ex1.dao;
+package ex1.factory;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import ex1.dao.UserDao22;
+import ex1.db.ConnectionMaker8;
+import ex1.db.DConnctionMaker9;
 
 
 @Configuration

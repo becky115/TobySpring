@@ -1,9 +1,12 @@
-package ex1.dao;
+package ex1.testCode;
 
 import java.sql.SQLException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import ex1.dao.UserDao22;
+import ex1.factory.DaoFactory22;
 
 public class UserDaoTest22 {
 	

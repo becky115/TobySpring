@@ -6,25 +6,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ex1.db.ConnectionMaker8;
-import ex1.db.DConnctionMaker9;
 import ex1.domain.User;
 
 /**
- * {@link ConnectionMaker8} 인터페이스를 사용하도록 개선한 UserDao10
+ * {@link UserDao10} 생성자 수정
  * @author ejlee
  *
  */
-public class UserDao10 {
+public class UserDao11_1 {
 	
-	private ConnectionMaker8 connectionMaker8;
+	private ConnectionMaker8 connectionMaker;
 	
 
-	public UserDao10() {
-		connectionMaker8 = new DConnctionMaker9();
+	public UserDao11_1(ConnectionMaker8 connectionMaker) {
+		this.connectionMaker = connectionMaker;
 	}
 	
 	public void add(User user) throws ClassNotFoundException, SQLException{
-		Connection c = connectionMaker8.makeConnection();
+		Connection c = connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 		ps.setString(1, user.getId());
@@ -38,7 +37,7 @@ public class UserDao10 {
 	}
 
 	public void delete(String id) throws ClassNotFoundException, SQLException{
-		Connection c = connectionMaker8.makeConnection();
+		Connection c = connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
 		ps.setString(1, id);
@@ -50,7 +49,7 @@ public class UserDao10 {
 	}
 	
 	public User get(String id) throws ClassNotFoundException, SQLException{
-		Connection c = connectionMaker8.makeConnection();
+		Connection c = connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);

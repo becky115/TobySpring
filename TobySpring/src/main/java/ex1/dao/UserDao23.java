@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ex1.db.ConnectionMaker8;
 import ex1.domain.User;
 
 /**
@@ -18,9 +19,15 @@ public class UserDao23 {
 	private Connection c;
 	private User user;
 	
+	public UserDao23(ConnectionMaker8 connectionMaker8){
+		this.connectionMaker = connectionMaker8;
+	}
 	
+
 	public User get(String id) throws ClassNotFoundException, SQLException{
+		System.out.println(connectionMaker);
 		this.c = connectionMaker.makeConnection();
+		System.out.println(this.c);
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);
@@ -39,4 +46,8 @@ public class UserDao23 {
 		
 		return this.user;
 	}
+
+
+	
+	
 }

@@ -1,7 +1,10 @@
-package ex1.dao;
+package ex1.testCode;
 
 import java.sql.SQLException;
 
+import ex1.dao.UserDao11;
+import ex1.db.ConnectionMaker8;
+import ex1.db.DConnctionMaker9;
 import ex1.domain.User;
 
 /**
@@ -12,6 +15,7 @@ import ex1.domain.User;
 public class UserDaoTest12 {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
 		ConnectionMaker8 connectionMaker8 = new DConnctionMaker9();
 		UserDao11 userDao = new UserDao11(connectionMaker8);
 		

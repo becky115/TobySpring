@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ex1.db.SimpleConnectionMaker7;
 import ex1.domain.User;
 
 /**

@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import ex1.domain.User;
-
 public class NUserDao extends UserDao5{
 
 	@Override
@@ -16,15 +14,16 @@ public class NUserDao extends UserDao5{
 		return c;
 	}
 	
-	@Override
-	public User get(String id) throws ClassNotFoundException, SQLException {
-		System.out.println("getId: "+ id);
-		return super.get(id);
-	}
+//	@Override
+//	public User get(String id) throws ClassNotFoundException, SQLException {
+//		System.out.println("getId: "+ id);
+//		return super.get(id);
+//	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		NUserDao userDao = new NUserDao();
 		userDao.get("id1");
+		//userDao.add(new User())
 	}
 	
 }

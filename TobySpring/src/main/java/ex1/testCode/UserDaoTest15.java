@@ -1,8 +1,10 @@
-package ex1.dao;
+package ex1.testCode;
 
 import java.sql.SQLException;
 
+import ex1.dao.UserDao11;
 import ex1.domain.User;
+import ex1.factory.DaoFactory14;
 
 /**
  *{@link DaoFactory14} 팩토리를 사용하도록 수정한 UserDaoTest15 
