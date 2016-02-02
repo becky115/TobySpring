@@ -28,7 +28,7 @@ public class UserDao {
 		//익명 내부 클래스는 구현하는 인터페이스를 생성자처럼 이용해서 오브젝트를 만든다.
 		StatementStrategy st = new StatementStrategy() {
 			public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-				PreparedStatement ps = c.prepareStatement("insert into users(id, name, password values(?, ?, ?)");
+				PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 				
 				ps.setString(1, user.getId());
 				ps.setString(2, user.getName());

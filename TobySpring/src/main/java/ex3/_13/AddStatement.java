@@ -14,7 +14,7 @@ import ex3._8.StatementStrategy;
 public class AddStatement implements StatementStrategy{
 
 	public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password values(?, ?, ?)");
+		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 		
 		/*
 		ps.setString(1, user.getId());

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import ex1.domain.User;
 import ex3._8.StatementStrategy;
 
 
@@ -29,7 +28,7 @@ public class UserDao {
 		this.jdbcContext.workWithStatementStrategy(
 			new StatementStrategy() {
 				public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-					PreparedStatement ps = c.prepareStatement("insert into users(id, name, password values(?, ?, ?)");
+					PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 					
 					ps.setString(1, user.getId());
 					ps.setString(2, user.getName());
@@ -51,7 +50,6 @@ public class UserDao {
 	}
 	
 	public User get(String id) throws SQLException{
-		
 		Connection c = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -62,10 +60,11 @@ public class UserDao {
 			c = dataSource.getConnection();
 	
 			ps = c.prepareStatement("select * from users where id = ?");
+			ps.setString(1, id);
 			
 			rs = ps.executeQuery();
 			rs.next();
-			
+
 			user = new User();
 			user.setId(rs.getString("id"));
 			user.setName(rs.getString("name"));
