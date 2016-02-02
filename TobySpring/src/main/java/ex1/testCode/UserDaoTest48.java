@@ -12,7 +12,7 @@ public class UserDaoTest48 {
 
 	public static void main(String[] args) {
 		
-		
+	
 		ApplicationContext context = new GenericXmlApplicationContext();//classpath:**/applicationContext.xml
 	
 		 DataSource dataSource = context.getBean("dataSource", SimpleDriverDataSource.class);

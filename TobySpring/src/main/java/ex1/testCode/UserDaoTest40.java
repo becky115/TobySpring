@@ -1,13 +1,9 @@
 package ex1.testCode;
 
-import javax.sql.DataSource;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import ex1.dao.UserDao33;
-import ex1.dao.UserDao44;
 import ex1.db.ConnectionMaker8;
 
 /**
@@ -19,8 +15,8 @@ public class UserDaoTest40 {
 	
 	 public static void main(String[] args) {
 		
-		 //ApplicationContext context = new GenericXmlApplicationContext("ex1/testCode/applicationContext.xml");
-		 ApplicationContext context = new GenericXmlApplicationContext("classpath:**/applicationContext.xml"); 
+		 //ApplicationContext context = new GenericXmlApplicationContext("");//ex1/testCode/applicationContext.xml
+		 ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml"); //classpath:**/applicationContext.xml
 
 		 System.out.println(context);
 		 UserDao33 userDao = context.getBean("userDao", UserDao33.class);
