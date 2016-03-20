@@ -20,7 +20,7 @@ public class UserDao {
 	}
 	
 	/**
-	 * 리스트 3-49 JdbcTemplate를 이용해 만든 getCount();
+	 * 리스트 3-49 JdbcTemplate를 이용해 만든 getCount()
 	 * @param dataSource
 	 */
 	public int getCount(){
@@ -38,7 +38,7 @@ public class UserDao {
 	}
 	
 	/**
-	 * 리스트 3-49 JdbcTemplate를 이용해 만든 getCount();
+	 * 리스트 3-50 JdbcTemplate를 이용해 만든 getCount()
 	 * @param dataSource
 	 */
 	public int getCount2(){

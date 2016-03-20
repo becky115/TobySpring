@@ -10,7 +10,7 @@ import ex3._41.LineCallback;
 public class Calculator {
 	
 	/**
-	 * 타입 파라미터를 추가해서 제네릭 메소드로 만든 lineReadTemplate()
+	 * 리스트 3-42 타입 파라미터를 추가해서 제네릭 메소드로 만든 lineReadTemplate()
 	 * @param filePath
 	 * @param callback
 	 * @param initVal

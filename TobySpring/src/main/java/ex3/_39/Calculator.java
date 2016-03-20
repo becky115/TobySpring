@@ -7,7 +7,7 @@ import java.io.IOException;
 import ex3._38.LineCallback;
 
 /**
- * LineCallback을 사용하는 템플릿
+ * 리스트 3-39 LineCallback을 사용하는 템플릿
  * @author eunji
  *
  */

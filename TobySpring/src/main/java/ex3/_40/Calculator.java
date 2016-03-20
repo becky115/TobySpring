@@ -32,7 +32,7 @@ public class Calculator {
 	}
 	
 	/**
-	 * lineReadTemplate()를 사용하도록 수정한 calcSum(), calcMultiply()메소드
+	 * 리스트 3-40 lineReadTemplate()를 사용하도록 수정한 calcSum(), calcMultiply()메소드
 	 * @param filePath
 	 * @return
 	 * @throws IOException

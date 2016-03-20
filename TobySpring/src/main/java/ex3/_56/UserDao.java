@@ -36,6 +36,12 @@ public class UserDao {
 		this.jdbcTemplate.update("delete from users");
 	}
 	
+	
+	/**
+	 * 리스트 3-57 공유 userMapper를 사용하도록 수정한 get(), getAll()
+	 * @param id
+	 * @return
+	 */
 	public User get(String id){
 		return this.jdbcTemplate.queryForObject("select * from users where id = ?", 
 			new Object[] {id}, 

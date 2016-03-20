@@ -32,7 +32,7 @@ public class Calculator {
 	}
 	
 	/**
-	 * 문자열 연결 기능 콜백을 이용해 만든 concatenate()메소드
+	 * 리스트 3-43 문자열 연결 기능 콜백을 이용해 만든 concatenate()메소드
 	 * @param filePath
 	 * @return
 	 * @throws IOException

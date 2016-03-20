@@ -7,7 +7,7 @@ import java.io.IOException;
 import ex3._33.BufferedReaderCallback;
 
 /**
- * BufferedREaderCallback을 사용하는 템플릿메소드
+ * 리스트 3-34  BufferedREaderCallback을 사용하는 템플릿메소드
  * @author eunji
  *
  */

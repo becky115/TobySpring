@@ -21,6 +21,10 @@ public class UserDao {
 		this.jdbcTemplate.update("delete from users");
 	}
 
+	/**
+	 * 리스트 3-53  getAll메소드
+	 * @return
+	 */
 	public List<User> getAll(){
 		return this.jdbcTemplate.query("select * from users order by id", 
 			new RowMapper<User>(){

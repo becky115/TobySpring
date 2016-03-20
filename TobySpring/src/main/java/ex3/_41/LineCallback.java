@@ -3,7 +3,7 @@ package ex3._41;
 import java.io.IOException;
 
 /**
- * 타입 파라미터를 적용한 LineCallback
+ * 리스트 3-41 타입 파라미터를 적용한 LineCallback
  * @author eunji
  *
  * @param <T>
