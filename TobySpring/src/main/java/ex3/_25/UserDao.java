@@ -21,7 +21,7 @@ public class UserDao {
 	private JdbcContext jdbcContext;
 	private DataSource dataSource;
 
-	//수정자 메소드이면ㄴ서 JdbcContext에 대한 생성, DI작업을 동시에 수행한다.
+	//수정자 메소드이면서 JdbcContext에 대한 생성, DI작업을 동시에 수행한다.
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcContext = new JdbcContext(); //JdbcContext생성(Ioc)
 		

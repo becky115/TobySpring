@@ -7,19 +7,28 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 리스트 3-52 getALl()에 대한 테스트
  * @author eunji
  */
-public class UserDaoTest {
-	UserDao dao;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="/ex3/_52/applicationContext2.xml")
+public class UserDaoTest2 {
+	
+	@Autowired
+	UserDao2 dao;
 	User user1;
 	User user2;
 	User user3;
 	
 	@Before public void setUp(){
-		this.dao = new UserDao();
 
 		user1 = new User();
 		user1.setId("gyumee");
@@ -42,7 +51,8 @@ public class UserDaoTest {
 	
 	@Test
 	public void getAll(){
-		dao.deleteAll();
+		System.out.println(this.dao);
+		this.dao.deleteAll();
 		
 		/**
 		 * 리스트3-54 데이터가 없는 경우에 대한 검증 코드가 추가된 getAll() 테스트
