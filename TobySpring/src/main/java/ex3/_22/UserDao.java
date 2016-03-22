@@ -22,7 +22,7 @@ public class UserDao {
 	}
 	
 	public void add(final User user) throws SQLException {
-		this.jdbcContext.workWithStatementStrategy(
+		this.jdbcContext.workWithStatementStrategy(//DI받은 JdbcContext의 컨텍스트 메소드를 사용하도록 변경
 			new StatementStrategy() {
 				public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
 					PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");

@@ -24,11 +24,11 @@ public class UserDao {
 	 * @param dataSource
 	 */
 	public int getCount(){
-		return this.jdbcTemplate.query(new PreparedStatementCreator() {
+		return this.jdbcTemplate.query(new PreparedStatementCreator() { //첫번쨰 콜백. Statement 생성
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				return con.prepareStatement("select count(*) from users");
 			}
-		}, new ResultSetExtractor<Integer>() {
+		}, new ResultSetExtractor<Integer>() { //두번째 콜백, ResultSet으로부터 값 추출 
 			public Integer extractData(ResultSet rs) throws SQLException, DataAccessException {
 				rs.next();
 				return rs.getInt(1);
