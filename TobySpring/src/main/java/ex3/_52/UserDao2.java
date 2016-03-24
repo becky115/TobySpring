@@ -6,28 +6,22 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 
-public class UserDao {
+public class UserDao2 {
 	private JdbcTemplate jdbcTemplate;
-	
-	
-	public UserDao() {
-		System.out.println("new UserDao");
-		ApplicationContext context = new GenericXmlApplicationContext("/ex3/_52/applicationContext.xml");
-		setDataSource(context.getBean("dataSource", DataSource.class));
-			
-	}
 
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) throws SQLException{
+		System.out.println("setDataSource");
+		System.out.println(dataSource.getConnection());
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		System.out.println(this.jdbcTemplate);
 	}
 	
 	public void deleteAll(){
+		System.out.println(this.jdbcTemplate);
 		this.jdbcTemplate.update("delete from users");
 	}
 

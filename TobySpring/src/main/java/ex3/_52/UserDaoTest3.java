@@ -3,24 +3,34 @@ package ex3._52;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 리스트 3-52 getALl()에 대한 테스트
  * @author eunji
  */
-public class UserDaoTest {
-	UserDao dao;
+
+public class UserDaoTest3 {
+	
+	
+	UserDao2 dao;
 	User user1;
 	User user2;
 	User user3;
 	
-	@Before public void setUp(){
-		this.dao = new UserDao();
-
+	@Before public void setUp() throws SQLException{
+		this.dao = new UserDao2();
+		this.dao.setDataSource(new SingleConnectionDataSource("jdbc:mysql://192.168.1.128/test", "root", "ejlee", true));
 		user1 = new User();
 		user1.setId("gyumee");
 		user1.setName("gyumee name");
@@ -42,13 +52,14 @@ public class UserDaoTest {
 	
 	@Test
 	public void getAll(){
-		dao.deleteAll();
+		System.out.println(this.dao);
+		this.dao.deleteAll();
 		
 		/**
 		 * 리스트3-54 데이터가 없는 경우에 대한 검증 코드가 추가된 getAll() 테스트
 		 */
 		List<User> users0 = dao.getAll();
-		assertThat(users0.size(), is(0));//데이터가 없을때는 크기가 0인 리스트 오브젝트가 리턴되야 한다.
+		assertThat(users0.size(), is(0));//데이터가 없을때는 크기가 0인 리스트 오브젝트가 리턴돼야한다.
 		
 		dao.add(user1); //Id: gyumee
 		List<User> users1 = dao.getAll();
@@ -64,7 +75,7 @@ public class UserDaoTest {
 		dao.add(user3); //Id: bumjin
 		List<User> users3 = dao.getAll();
 		assertThat(users3.size(), is(3));
-		checkSameUser(user3, users3.get(0)); //user3의 id값이 알파벳순으로 가장 빠르므로 getAll()의 첫번째 엘리먼트여야 한다.
+		checkSameUser(user3, users3.get(0));
 		checkSameUser(user1, users3.get(1));
 		checkSameUser(user2, users3.get(2));
 	}
