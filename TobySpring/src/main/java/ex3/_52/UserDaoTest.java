@@ -47,7 +47,7 @@ public class UserDaoTest {
 		 * 리스트3-54 데이터가 없는 경우에 대한 검증 코드가 추가된 getAll() 테스트
 		 */
 		List<User> users0 = dao.getAll();
-		assertThat(users0.size(), is(0));//데이터가 없을때는 크기가 0인 리스트 오브젝트가 리턴돼야한다.
+		assertThat(users0.size(), is(0));//데이터가 없을때는 크기가 0인 리스트 오브젝트가 리턴되야 한다.
 		
 		dao.add(user1); //Id: gyumee
 		List<User> users1 = dao.getAll();
@@ -63,7 +63,7 @@ public class UserDaoTest {
 		dao.add(user3); //Id: bumjin
 		List<User> users3 = dao.getAll();
 		assertThat(users3.size(), is(3));
-		checkSameUser(user3, users3.get(0));
+		checkSameUser(user3, users3.get(0)); //user3의 id값이 알파벳순으로 가장 빠르므로 getAll()의 첫번째 엘리먼트여야 한다.
 		checkSameUser(user1, users3.get(1));
 		checkSameUser(user2, users3.get(2));
 	}
