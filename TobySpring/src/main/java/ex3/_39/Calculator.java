@@ -27,7 +27,7 @@ public class Calculator {
 			Integer res = initVal;
 			String line = null;
 			while((line = br.readLine()) != null){//파일의 각 라인을 루프를 돌면서 가져오는것도 템플릿이 담당한다.
-				res = callback.doSomthingWithLine(line, initVal);
+				res = callback.doSomthingWithLine(line, res);
 				//line: 각 라인의 내용을 가지고 계산하는 작업만 콜백에게 맡긴다.
 				//res: 콜백이 계산한 값을 저장해뒀다가 다음 라인 계산에 다시 사용한다.
 			}

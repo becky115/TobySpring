@@ -30,7 +30,7 @@ public class UserDao {
 				/**
 				 * 리스트 3-48 add() 메소드의 콜백 내부
 				 */
-				PreparedStatement ps = con.prepareStatement("inserst into users(id, name, password) values(?, ?, ?)");
+				PreparedStatement ps = con.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
 				ps.setString(1, user.getId());
 				ps.setString(2, user.getName());
 				ps.setString(3, user.getPassword());
@@ -41,7 +41,7 @@ public class UserDao {
 	}
 	
 	public void add2(final User user){
-		this.jdbcTemplate.update("inserst into users(id, name, password) values(?, ?, ?)", user.getId(), user.getName(), user.getPassword());
+		this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)", user.getId(), user.getName(), user.getPassword());
 	}
 	
 }
