@@ -1,6 +1,4 @@
-package ex5._9;
-
-import ex5._3.Level;
+package ex5._3;
 
 public class User {
 	
@@ -74,6 +72,7 @@ public class User {
 	public void setRecommend(int recommend) {
 		this.recommend = recommend;
 	}
+
 	
 	
 }

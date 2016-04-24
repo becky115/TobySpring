@@ -1,4 +1,4 @@
-package ex5._9;
+package ex5._10;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,8 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ex5._3.Level;
 import ex5._3.User;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/ex5/_9/applicationContext.xml")
+@ContextConfiguration(locations="/ex5/_10/applicationContext.xml")
 public class UserDaoTest {
 	
 	@Autowired
@@ -51,6 +52,23 @@ public class UserDaoTest {
 		checkSameUser(userget2, user2);
 		
 		
+	}
+	
+	@Test
+	public void update(){
+		dao.deleteAll();
+		
+		dao.add(user1);
+		
+		user1.setName("오민규");
+		user1.setPassword("springno6");
+		user1.setLevel(Level.GOLD);
+		user1.setLogin(1000);
+		user1.setRecommend(999);
+		dao.update(user1);
+		
+		User user1update = dao.get(user1.getId());
+		checkSameUser(user1, user1update);
 	}
 
 

@@ -1,6 +1,6 @@
-package ex5._8;
+package ex5._26;
 
-import ex5._3.Level;
+import java.util.Date;
 
 public class User {
 	
@@ -11,6 +11,8 @@ public class User {
 	private Level level;
 	private int login;
 	private int recommend;
+	
+	private Date lastupgraded;
 	
 	
 	public User(String id, String name, String password, Level level, int login, int recommend) {
@@ -73,6 +75,24 @@ public class User {
 	
 	public void setRecommend(int recommend) {
 		this.recommend = recommend;
+	}
+
+	public Date getLastupgraded() {
+		return lastupgraded;
+	}
+
+	public void setLastupgraded(Date lastupgraded) {
+		this.lastupgraded = lastupgraded;
+	}
+
+	public void upgradeLevel(){
+		Level nextLevel = this.level.nextLevel();
+		if(nextLevel == null){
+			throw new IllegalStateException(this.level + "은 업그레이드가 불가능 합니다.");	
+		}else{
+			this.level = nextLevel;
+			this.lastupgraded = new Date();
+		}
 	}
 	
 	

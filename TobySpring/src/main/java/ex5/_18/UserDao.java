@@ -1,4 +1,4 @@
-package ex5._8;
+package ex5._18;
 
 import java.util.List;
 
@@ -11,4 +11,5 @@ public interface UserDao {
 	List<User> getAll();
 	void deleteAll();
 	int getCount();
+	public int update(User user);
 }

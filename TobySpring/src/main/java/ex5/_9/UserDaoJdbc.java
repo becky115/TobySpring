@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import ex5._3.Level;
+import ex5._3.User;
 
 public class UserDaoJdbc implements UserDao{
 	private JdbcTemplate jdbcTemplate;
