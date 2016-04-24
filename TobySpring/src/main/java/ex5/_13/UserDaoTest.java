@@ -3,8 +3,6 @@ package ex5._13;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.sql.SQLException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +33,7 @@ public class UserDaoTest {
 	
 	
 	@Test
-	public void addAndGet() throws ClassNotFoundException, SQLException {
+	public void addAndGet(){
 
 		
 		dao.deleteAll();
@@ -57,8 +55,8 @@ public class UserDaoTest {
 	public void update(){
 		dao.deleteAll();
 		
-		dao.add(user1);
-		dao.add(user2);
+		dao.add(user1); //수정할 사용자
+		dao.add(user2); //수정하지 않을 사용자
 		
 		user1.setName("오민규");
 		user1.setPassword("springno6");

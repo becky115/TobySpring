@@ -12,7 +12,8 @@ public class User {
 		this.level = level;
 	}
 	
-	
+
+
 	
 	
 }

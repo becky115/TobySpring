@@ -33,7 +33,6 @@ public class UserTest {
 	public void cannotUpgradeLevel(){
 		Level[] levels = Level.values();
 		for(Level level: levels){
-			System.out.println(level.intValue()+","+ level.name()+","+level.nextLevel());
 			if(level.nextLevel() != null) continue;
 			user.setLevel(level);
 			user.upgradeLevel();

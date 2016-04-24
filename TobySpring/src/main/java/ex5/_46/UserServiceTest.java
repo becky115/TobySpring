@@ -111,7 +111,9 @@ public class UserServiceTest {
 	public void upgradeAllOrNothing() throws Exception{
 		//예외를 발생시킬 네번째 사용자의 id를 넣어서 테스트용 UserService 대역 오브젝트를 생성한다.
 		UserService testUserService = new TestUserService(users.get(3).getId());
-		testUserService.setUserDao(userDao); //userDao를 수동 DI 해준다 
+		
+		//userService 빈의 프로퍼티 설정과 동일한 수동DI 
+		testUserService.setUserDao(userDao);
 		testUserService.setTransactionManager(transactionManager);
 		
 		userDao.deleteAll();
