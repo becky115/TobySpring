@@ -26,10 +26,7 @@ public class UserService {
 		}
 	}
 
-	protected void upgradeLevel(Connection c, User user) {
-		user.upgradeLevel();
-		userDao.update(c, user);
-	}
+
 
 
 	

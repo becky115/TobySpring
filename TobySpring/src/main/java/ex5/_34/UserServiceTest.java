@@ -132,6 +132,7 @@ public class UserServiceTest {
 		
 		
 		protected void upgradeLevel(User user) { //UserService의 메소드를 오버라이드 한다.
+			//지정된 id의 User오브젝트가 발견되면 예외를 던져서 작업을 강제로 중단시킨다.
 			if(user.getId().equals(this.id)) throw new TestUserServiceException();
 			super.upgradeLevel(user);
 		}
