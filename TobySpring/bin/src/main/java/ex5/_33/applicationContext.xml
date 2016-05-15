@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://192.168.1.128/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="ejlee"/>
+	
+	</bean>
+	
+	<bean id="userService" class="ex5._33.UserService">
+		<property name="userDao" ref="userDao"/>
+		<property name="userLevelUpgradePolicy" ref="userLevelUpgradePolicy"/>
+	</bean>
+
+	<bean id="userDao" class="ex5._26.UserDaoJdbc">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="userLevelUpgradePolicy" class="ex5._33.TestUserLevel">
+	</bean>
+</beans>

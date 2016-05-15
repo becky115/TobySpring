@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 리스트 3-24 JdbcContext 빈을 제거한 설정파일 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+		
+	<bean id="userDao" class="ex3._23.UserDao">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="ejlee"/>
+	
+	</bean>
+	
+
+	
+</beans>
