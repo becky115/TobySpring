@@ -1,13 +1,10 @@
 package ex5._3;
 
-import static ex5._3.Test.A;
-import static ex5._3.Test.B;
-import static ex5._3.Test.C;
 
 public enum Level {
 	
 	
-	BASIC(Test.A), SILVER(Test.B), GOLD(Test.C); // 세 개의 이늄 오브젝트 정의
+	BASIC(1), SILVER(2), GOLD(3); // 세 개의 이늄 오브젝트 정의
 	
 	private final int value;
 	
@@ -26,9 +23,9 @@ public enum Level {
 
 	public static Level valueOf(int value){//값으로부터 Level타입 오브젝트를 가져오도록 만든 스태틱 메소드
 		switch(value){
-			case Test.A: return Level.BASIC;
-			case Test.B: return Level.SILVER;
-			case Test.C: return GOLD;
+			case 1: return Level.BASIC;
+			case 2: return Level.SILVER;
+			case 3: return GOLD;
 			default: throw new AssertionError("Unknown value: "+ value);
 		}
 		

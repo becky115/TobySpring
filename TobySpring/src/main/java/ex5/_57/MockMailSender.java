@@ -24,9 +24,8 @@ public class MockMailSender implements MailSender{
 	}
 
 	@Override
-	public void send(SimpleMailMessage[] mailMessage) throws MailException {
-		
-		
+	public void send(SimpleMailMessage... simpleMessages) throws MailException {
+	
 	}
 
 }

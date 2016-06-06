@@ -1,8 +1,7 @@
-package ex5._53;
+package ex5._57;
 
 import java.util.List;
 
-import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -11,9 +10,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import ex5._50.Level;
-import ex5._50.User;
-import ex5._50.UserDao;
-
 
 public class UserService {
 	

@@ -76,7 +76,7 @@ public class UserService {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
 			message.setSubject("Upgrade 안내");
 			message.setText("사용자님의 등급이 "+user.getLevel().name() + "로 업그레이드 되었습니다.");
-			
+	
 			Transport.send(message);
 			
 		}catch(AddressException e){
@@ -84,6 +84,7 @@ public class UserService {
 		}catch(MessagingException e) {
 			throw new RuntimeException(e);
 		}
+		
 //		catch(UnsupportedEncodingException e) {
 //			throw new RuntimeException(e);
 //		}

@@ -22,13 +22,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import ex5._50.Level;
-import ex5._50.User;
-import ex5._50.UserDao;
-import ex5._53.UserService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/ex5/_46/applicationContext.xml")
+@ContextConfiguration(locations="/ex5/_57/applicationContext.xml")
 public class UserServiceTest {
 	
 	@Autowired
