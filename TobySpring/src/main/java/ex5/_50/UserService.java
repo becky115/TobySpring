@@ -1,6 +1,5 @@
 package ex5._50;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Properties;
 
@@ -84,10 +83,6 @@ public class UserService {
 		}catch(MessagingException e) {
 			throw new RuntimeException(e);
 		}
-		
-//		catch(UnsupportedEncodingException e) {
-//			throw new RuntimeException(e);
-//		}
 		
 	}
 

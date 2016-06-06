@@ -7,13 +7,13 @@ import org.springframework.mail.SimpleMailMessage;
 public class DummyMailSender implements MailSender{
 
 	@Override
-	public void send(SimpleMailMessage arg0) throws MailException {
+	public void send(SimpleMailMessage mailMessage) throws MailException {
 		// TODO Auto-generated method stub
-		
+		System.out.println("메일 전송 dummy send");
 	}
 
 	@Override
-	public void send(SimpleMailMessage... arg0) throws MailException {
+	public void send(SimpleMailMessage... mailMessage) throws MailException {
 		// TODO Auto-generated method stub
 		
 	}
