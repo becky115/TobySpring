@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://192.168.1.128/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="ejlee"/>
+	
+	</bean>
+
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource"  ref="dataSource"/>
+	</bean>
+
+	<bean id="userDao" class="ex7._7.UserDaoJdbc">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="sqlService" ref="sqlService"/>
+	</bean>
+	
+	<bean id="sqlService" class="ex7._7.SimpleSqlService">
+		<property name="sqlMap">
+			<map>
+				<entry key="userAdd" value="insert into users(id, name, password, email, level, login, recommend) 
+				 values(?, ?, ?, ?, ?, ?, ?)"/>
+				<entry key="userGet" value="select * from users where id = ?"/>
+				<entry key="userGetAll" value="select * from users order by id"/>
+				<entry key="userDeleteAll" value="delete from users"/>
+				<entry key="userGetCount" value="select count(*) from users"/>
+				<entry key="userUpdate" value="update users set name = ?, password=?, email=?, 
+				 level=?, login=?, recommend=? where id=?"/>
+			</map>
+		</property>
+	
+	</bean>
+
+	
+</beans>
