@@ -1,6 +1,7 @@
 package ex5._57;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -39,6 +40,7 @@ public class UserService {
 
 
 	public void upgradeLevels(){
+		System.out.println("UserService upgradeLevels......");
 		//DI받은 트랜잭션 매니저를 공유해서 사용한다. 멀티스레드 환경에서도 안전하다.
 		TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
 		
@@ -46,12 +48,15 @@ public class UserService {
 			//트랜잭션 안에서 진행되는 작업 
 			List<User> users = userDao.getAll();
 			for(User user: users){
+				
 				if(canUpgradeLevel(user)){
+					System.out.println(user.getId());
 					upgradeLevel(user);
 				}
 			}
 			this.transactionManager.commit(status);//트랜잭션 커밋
 		}catch(RuntimeException e){//예외가 발생하면 롤백한다.
+		//	e.printStackTrace();
 			System.out.println("예외 발생 roll back ");
 			this.transactionManager.rollback(status);//트랜잭션 커밋
 			throw e;
@@ -60,22 +65,26 @@ public class UserService {
 	}
 	
 	protected void upgradeLevel(User user) {
+		//System.out.println("UserService upgradeLevel......");
 		user.upgradeLevel();
 		userDao.update(user);
 		sendUpgradeEmail(user);
 	}
 
 	private void sendUpgradeEmail(User user) {
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost("mail.server.com");
+		//props.put("mail.smtp.starttls.enable","true");  이 부분을
+
 		
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		
 		mailMessage.setTo(user.getEmail());
-		mailMessage.setFrom("useradmin@ksug.org");
+		mailMessage.setFrom("navy@mnd.mil");
 		mailMessage.setSubject("Upgrade 안내");
 		mailMessage.setText("사용자님의 등급이 "+user.getLevel().name() + "로 업그레이드 되었습니다.");
 		
+		
+
+
 		this.mailSender.send(mailMessage);
 		
 	}

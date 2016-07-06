@@ -12,6 +12,9 @@
 	
 	</bean>
 	
+	<bean id="mailSender" class="ex5._57.DummyMailSender"/>
+	
+	
 	<bean id="userService" class="ex5._57.UserService">
 		<property name="userDao" ref="userDao"/>
 		<property name="transactionManager" ref="transactionManager"/>
@@ -27,8 +30,6 @@
 	</bean>
 	
 	
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="mail.server.com"/>
-	</bean>
+
 	
 </beans>

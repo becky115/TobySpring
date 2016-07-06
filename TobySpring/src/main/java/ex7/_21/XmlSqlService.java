@@ -27,6 +27,7 @@ public class XmlSqlService implements SqlService{
 	
 	@PostConstruct
 	public void loadSql() {
+		System.out.println("loadSql..");
 		String contextPath = Sqlmap.class.getPackage().getName();
 		
 		try{

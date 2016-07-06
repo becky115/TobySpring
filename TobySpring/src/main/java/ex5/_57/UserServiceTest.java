@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -50,11 +53,11 @@ public class UserServiceTest {
 	public void setUp(){
 		//테스트에서는 가능한 한 경계 값을 사용하는것이 좋다.
 		users = Arrays.asList(
-				new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER -1, 0, null),
-				new User("joytouch", "강명성", "p2", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER, 0, null),
-				new User("erwins", "신승한", "p3", Level.SILVER, 60, MIN_RECCOMEND_FOR_GOLD -1, null),
-				new User("madnite1", "이상호", "p4", Level.SILVER, 60, MIN_RECCOMEND_FOR_GOLD, null),
-				new User("green", "오민규", "p5", Level.GOLD, 100, Integer.MAX_VALUE, null)
+				new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER -1, 0, "ejlee@narusec.com"),
+				new User("joytouch", "강명성", "p2", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER, 0, "ejlee@narusec.com"),
+				new User("erwins", "신승한", "p3", Level.SILVER, 60, MIN_RECCOMEND_FOR_GOLD -1, "ejlee@narusec.com"),
+				new User("madnite1", "이상호", "p4", Level.SILVER, 60, MIN_RECCOMEND_FOR_GOLD, "ejlee@narusec.com"),
+				new User("green", "오민규", "p5", Level.GOLD, 100, Integer.MAX_VALUE, "ejlee@narusec.com")
 				
 		);
 	}
@@ -123,7 +126,7 @@ public class UserServiceTest {
 	public void upgradeAllOrNothing() throws Exception{
 		//예외를 발생시킬 네번째 사용자의 id를 넣어서 테스트용 UserService 대역 오브젝트를 생성한다.
 		UserService testUserService = new TestUserService(users.get(3).getId());
-		
+		System.out.println(mailSender.toString());
 		testUserService.setMailSender(mailSender);
 		
 		//userService 빈의 프로퍼티 설정과 동일한 수동DI 
@@ -158,13 +161,38 @@ public class UserServiceTest {
 		
 		
 		protected void upgradeLevel(User user) { //UserService의 메소드를 오버라이드 한다.
+			//System.out.println("TestUserService upgradeLevel......");
 			if(user.getId().equals(this.id)) throw new TestUserServiceException();
 			super.upgradeLevel(user);
 		}
-	 }
-	 
-	 static class TestUserServiceException extends RuntimeException {
+	}
+	
+	static class TestUserServiceException extends RuntimeException {
 
-	 }
+	}
+	
+	static class MockMailSender implements MailSender{
+			
+		//UserService로부터 전송요청을 받은 메일 주소를 저장해 두고 이를 읽을 수 있게 한다.
+		private List<String> requests = new ArrayList<String>();
+
+		public List<String> getRequests() {
+			return requests;
+		}
+
+		@Override
+		public void send(SimpleMailMessage mailMessage) throws MailException {
+			System.out.println("mailMessage.getTo()[0]: " + mailMessage.getTo()[0]);
+			requests.add(mailMessage.getTo()[0]); //전송 요청을 받은 이메일 주소를 저장해둔다. 간단하게 첫 번째 수신자 메일 주소만 저장했다 .
+			
+		}
+
+		@Override
+		public void send(SimpleMailMessage... simpleMessages) throws MailException {
+		
+		}
+
+	}
+
 
 }

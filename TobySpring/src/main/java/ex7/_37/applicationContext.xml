@@ -47,7 +47,6 @@
 	<bean id="sqlService" class="ex7._37.XmlSqlService">
 		<property name="sqlReader" ref="sqlReader"></property>
 		<property name="sqlRegistry" ref="sqlRegistry"></property>
-		<property name="sqlmapFile" value="sqlmap.xml"></property>
 	</bean>
 
 	
