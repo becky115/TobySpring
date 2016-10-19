@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+						
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://192.168.1.128/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="ejlee"/>
+	</bean>
+
+	<bean id="userDao" class="ex7.common.UserDaoJdbc">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="sqlService" ref="sqlService"/>
+	</bean>
+	
+	<bean id="sqlService" class="ex7.common.BaseSqlService">
+		<property name="unmarshaller" ref="unmarshaller"></property>
+		<property name="sqlRegistry" ref="sqlRegistry"></property>
+	</bean>
+	
+	<bean id="sqlRegistry" class="ex7._63.MyUpdatableSqlRegistry"></bean>
+	
+	<bean id="sqlAdminService" class="ex7._63.SqlAdminService">
+		<property name="updatableSqlRegistry" ref="sqlRegistry"></property>
+	</bean>
+	
+	
+	
+	<bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="contextPath" value="ex7._46.jaxb" />
+	</bean>
+	
+</beans>

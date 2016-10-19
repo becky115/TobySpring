@@ -1,4 +1,4 @@
-package ex7._41;
+package ex7.common;
 
 import javax.annotation.PostConstruct;
 

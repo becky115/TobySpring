@@ -43,13 +43,13 @@
 	<bean id="sqlRegistry" class="ex7._41.HashMapSqlRegistry">
 	
 	</bean>
-	<bean id="ultraSuperFastSqlRegistry" class="ex7._41.UltraSuperFastSqlRegistry">
-	
-	</bean>
+
 	
 	<bean id="sqlService" class="ex7._41.DefaultSqlService">
 		<property name="sqlRegistry" ref="ultraSuperFastSqlRegistry"></property>
 	</bean>
-
+	<bean id="ultraSuperFastSqlRegistry" class="ex7._41.UltraSuperFastSqlRegistry">
+	
+	</bean>
 	
 </beans>
