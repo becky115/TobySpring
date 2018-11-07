@@ -14,21 +14,21 @@ import ex1.db.DConnctionMaker9;
  */
 public class DaoFactory16 {
 	
-	public UserDao11 userDao(){
+	public UserDao11 userDao() {
 		ConnectionMaker8 connectionMaker8 = new DConnctionMaker9();
 		
 		UserDao11 userDao = new UserDao11(connectionMaker8);
 		return userDao;
 	}
 	
-	public AccountDao accountDao(){
+	public AccountDao accountDao() {
 		ConnectionMaker8 connectionMaker8 = new DConnctionMaker9();
 		
 		AccountDao accountDao = new AccountDao(connectionMaker8);
 		return accountDao;
 	}
 	
-	public MessageDao messageDao(){
+	public MessageDao messageDao() {
 		ConnectionMaker8 connectionMaker8 = new DConnctionMaker9();
 		
 		MessageDao messageDao = new MessageDao(connectionMaker8);

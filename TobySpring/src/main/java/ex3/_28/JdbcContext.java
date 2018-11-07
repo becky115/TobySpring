@@ -38,7 +38,7 @@ public class JdbcContext {
 			new StatementStrategy() {
 				public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
 					PreparedStatement ps =  c.prepareStatement(query);
-					for(int i=0; i<args.length; i++){
+					for(int i=0; i<args.length; i++) {
 						//TODO CHECK
 						ps.setString(i, args[i].toString());
 					}
@@ -48,22 +48,22 @@ public class JdbcContext {
 		);
 	}
 	
-	public void workWithStatementStrategy(StatementStrategy stmt) throws SQLException{
+	public void workWithStatementStrategy(StatementStrategy stmt) throws SQLException {
 		
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			c = dataSource.getConnection();
 			
 			ps = stmt.makePreparedStatement(c);
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 		}
 		
 	}

@@ -90,11 +90,11 @@ public class User {
 		this.lastupgraded = lastupgraded;
 	}
 
-	public void upgradeLevel(){
+	public void upgradeLevel() {
 		Level nextLevel = this.level.nextLevel();
-		if(nextLevel == null){
+		if(nextLevel == null) {
 			throw new IllegalStateException(this.level + "은 업그레이드가 불가능 합니다.");	
-		}else{
+		} else {
 			this.level = nextLevel;
 			this.lastupgraded = new Date();
 		}

@@ -28,7 +28,7 @@ public class UserDaoTest {
 	User user3;
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		this.user1 = new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER -1, 0, "1@naver.com");
 		this.user2 = new User("joytouch", "강명성", "p2", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER, 0, "2@naver.com");
 		this.user3 = new User("erwins", "신승한", "p3", Level.SILVER, 60, MIN_RECCOMEND_FOR_GOLD -1, "3@naver.com");
@@ -37,7 +37,7 @@ public class UserDaoTest {
 	
 	
 	@Test
-	public void addAndGet(){
+	public void addAndGet() {
 
 		
 		dao.deleteAll();
@@ -56,7 +56,7 @@ public class UserDaoTest {
 	}
 	
 	@Test
-	public void update(){
+	public void update() {
 		dao.deleteAll();
 		
 		dao.add(user1); //수정할 사용자

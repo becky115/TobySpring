@@ -11,11 +11,11 @@ import java.io.IOException;
  */
 public class Calculator {
 	
-	public Integer calcSum(String filePath) throws IOException{
+	public Integer calcSum(String filePath) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(filePath)); //한줄씩 읽기 편하게 BufferedReader로 파일을 가져온다.
 		Integer sum = 0;
 		String line = null;
-		while((line = br.readLine()) != null){//마지막 라인까지 한줄 씩 읽어가면서 숫자를 더한다.
+		while((line = br.readLine()) != null) {//마지막 라인까지 한줄 씩 읽어가면서 숫자를 더한다.
 			sum += Integer.valueOf(line);
 		}
 		br.close(); //한번 연 파일은 반드시 닫아준다.

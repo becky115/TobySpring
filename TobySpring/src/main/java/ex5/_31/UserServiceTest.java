@@ -36,7 +36,7 @@ public class UserServiceTest {
 	List<User> users; //테스트픽스처 
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		//테스트에서는 가능한 한 경계 값을 사용하는것이 좋다.
 		users = Arrays.asList(
 				new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER -1, 0),
@@ -49,7 +49,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void upgradeLevels(){
+	public void upgradeLevels() {
 		userDao.deleteAll();
 		
 		for(User user: users) userDao.add(user);
@@ -69,17 +69,17 @@ public class UserServiceTest {
 	 * @param user
 	 * @param upgraded 어떤레벨로 바뀔 것인가가 아니라, 다음레벨로 업그레이드 될 것인가 아닌가를 지정한다.
 	 */
-	private void checkLevelUpgraded(User user, boolean upgraded){
+	private void checkLevelUpgraded(User user, boolean upgraded) {
 		User userUpdate = userDao.get(user.getId());
-		if(upgraded){
+		if(upgraded) {
 			assertThat(userUpdate.getLevel(), is(user.getLevel().nextLevel()));
-		}else{
+		} else {
 			assertThat(userUpdate.getLevel(), is(user.getLevel()));
 		}
 	}
 	
 	@Test
-	public void add(){
+	public void add() {
 		userDao.deleteAll();
 		
 		//GOLD레벨이 이미 지정된 User라면 레벨을 초기화하지 않아야 한다.

@@ -16,7 +16,7 @@ public class DaoFactory35 {
 
 	
 	@Bean //-----------------------------------------> <bean
-	public ConnectionMaker8 connectionMaker(){ //----> id="connectionMaker"
+	public ConnectionMaker8 connectionMaker() { //----> id="connectionMaker"
 		return new DConnctionMaker9(); //------------> class"ex1.db.DConnectionMaker"/>
 	}
 }

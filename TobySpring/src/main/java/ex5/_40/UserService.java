@@ -11,15 +11,15 @@ public class UserService {
 	
 	UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 	/*
 	public void upgradeLevels() {
 		Connection c = ...;
-		try{
+		try {
 			upgradeLevel(c, user);
-		}catch(Exception e){
+		} catch (Exception e) {
 			
 		}finally {
 			
@@ -32,7 +32,7 @@ public class UserService {
 	
 	*/
 	
-	interface UserDao{
+	interface UserDao {
 		public void update(Connection c, User user);
 	}
 

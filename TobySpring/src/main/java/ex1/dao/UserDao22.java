@@ -19,16 +19,16 @@ public class UserDao22 {
 	private static UserDao22 INSTANCE;
 	private ConnectionMaker8 connectionMaker;
 	
-	private UserDao22(ConnectionMaker8 connectionMaker){
+	private UserDao22(ConnectionMaker8 connectionMaker) {
 		this.connectionMaker = connectionMaker;
 	}
 	
-	public static synchronized UserDao22 getInstance(){
+	public static synchronized UserDao22 getInstance() {
 		if(INSTANCE == null) INSTANCE = new UserDao22(new DConnctionMaker9());
 		return INSTANCE;
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

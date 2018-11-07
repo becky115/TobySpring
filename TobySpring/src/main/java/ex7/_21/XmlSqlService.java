@@ -30,16 +30,16 @@ public class XmlSqlService implements SqlService{
 		System.out.println("loadSql..");
 		String contextPath = Sqlmap.class.getPackage().getName();
 		
-		try{
+		try {
 			JAXBContext context = JAXBContext.newInstance(contextPath);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			InputStream is = UserDao.class.getResourceAsStream(this.sqlmapFile);
 			Sqlmap sqlmap = (Sqlmap) unmarshaller.unmarshal(is);
 			
-			for(SqlType sql: sqlmap.getSql()){
+			for(SqlType sql: sqlmap.getSql()) {
 				sqlMap.put(sql.getKey(),  sql.getValue());
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		

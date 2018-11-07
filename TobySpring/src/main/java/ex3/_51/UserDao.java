@@ -18,14 +18,14 @@ import ex3._25.User;
 public class UserDao {
 	private JdbcTemplate jdbcTemplate;
 	
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public User get(String id){
+	public User get(String id) {
 		return this.jdbcTemplate.queryForObject("select * from users where id = ?", 
 			new Object[] {id}, //sql에 바인딩할 파라미터 값, 가변인자 대신 배열을 사용한다. 
-			new RowMapper<User>(){ //ResultSet
+			new RowMapper<User>() { //ResultSet
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 					User user = new User();
 					user.setId(rs.getString("id"));

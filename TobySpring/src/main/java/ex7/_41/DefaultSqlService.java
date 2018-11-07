@@ -12,7 +12,7 @@ public class DefaultSqlService extends BaseSqlService{
 	}
 	
 	@PostConstruct
-	public void test(){
+	public void test() {
 		System.out.println("default sql service postconstruct");
 		
 		setDefault();
@@ -21,14 +21,14 @@ public class DefaultSqlService extends BaseSqlService{
 		
 	}
 	
-	public void setDefault(){
+	public void setDefault() {
 //		System.out.println(this.sqlReader);
 		System.out.println(this.sqlReader);
-		if(this.sqlRegistry == null){
+		if(this.sqlRegistry == null) {
 			//System.out.println("set hashmap");
 			setSqlRegistry(new HashMapSqlRegistry());
 		}
-		if(this.sqlReader == null){
+		if(this.sqlReader == null) {
 			//System.out.println("set jaxb");
 			setSqlReader(new JaxbXmlSqlReader());
 		}

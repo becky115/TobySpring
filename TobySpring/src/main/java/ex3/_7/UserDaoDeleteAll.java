@@ -12,7 +12,7 @@ import ex3._23.UserDao;
  * @author eunji
  *
  */
-public class UserDaoDeleteAll extends UserDao{
+public class UserDaoDeleteAll extends UserDao {
 
 	protected PreparedStatement makeStatement(Connection c) throws SQLException {
 		PreparedStatement ps = c.prepareStatement("delete from users");

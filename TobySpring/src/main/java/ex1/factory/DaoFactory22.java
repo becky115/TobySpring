@@ -12,13 +12,13 @@ import ex1.db.DConnctionMaker9;
 public class DaoFactory22 {
 
 	@Bean
-	public UserDao22 userDao(){
+	public UserDao22 userDao() {
 		//return new UserDao22(connectionMaker());
 		return UserDao22.getInstance();
 	}
 	
 	@Bean
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new DConnctionMaker9();
 	}
 }

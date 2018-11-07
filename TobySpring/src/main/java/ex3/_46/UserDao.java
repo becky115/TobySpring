@@ -19,12 +19,12 @@ public class UserDao {
 	 * 리스트 3-45 JdbcTemplate의 초기화를 위한 코드
 	 * @param dataSource
 	 */
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	
-	public void add(final User user){
+	public void add(final User user) {
 		this.jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				/**
@@ -40,7 +40,7 @@ public class UserDao {
 		
 	}
 	
-	public void add2(final User user){
+	public void add2(final User user) {
 		this.jdbcTemplate.update("insert into users(id, name, password) values(?, ?, ?)", user.getId(), user.getName(), user.getPassword());
 	}
 	

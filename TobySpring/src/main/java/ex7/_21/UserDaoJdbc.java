@@ -12,13 +12,13 @@ import org.springframework.jdbc.core.RowMapper;
 import ex7.Level;
 import ex7.User;
 
-public class UserDaoJdbc implements UserDao{
+public class UserDaoJdbc implements UserDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
 	private SqlService sqlService;
 	
-	private RowMapper<User> userMapper = new RowMapper<User>(){ //ResultSet
+	private RowMapper<User> userMapper = new RowMapper<User>() { //ResultSet
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			User user = new User();
 			user.setId(rs.getString("id"));
@@ -40,7 +40,7 @@ public class UserDaoJdbc implements UserDao{
 	}
 
 
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	

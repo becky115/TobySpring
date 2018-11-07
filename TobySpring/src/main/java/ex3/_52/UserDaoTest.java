@@ -18,7 +18,7 @@ public class UserDaoTest {
 	User user2;
 	User user3;
 	
-	@Before public void setUp(){
+	@Before public void setUp() {
 		this.dao = new UserDao();
 
 		user1 = new User();
@@ -41,7 +41,7 @@ public class UserDaoTest {
 	
 	
 	@Test
-	public void getAll(){
+	public void getAll() {
 		dao.deleteAll();
 		
 		/**

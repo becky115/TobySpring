@@ -10,7 +10,7 @@ import java.sql.SQLException;
  */
 public class SimpleConnectionMaker7 {
 	
-	public Connection makeNewConnection() throws ClassNotFoundException, SQLException{
+	public Connection makeNewConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
 		

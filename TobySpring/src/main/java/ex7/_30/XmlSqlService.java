@@ -42,9 +42,9 @@ public class XmlSqlService implements SqlService, SqlRegistry, SqlReader{
 
 	@Override
 	public String getSql(String key) throws SqlRetrievalFailureException {
-		try{
+		try {
 			return this.sqlRegistry.findSql(key);
-		}catch(SqlNotFoundException e){
+		} catch (SqlNotFoundException e) {
 			throw new SqlRetrievalFailureException(e.getMessage());
 		}
 	}
@@ -66,16 +66,16 @@ public class XmlSqlService implements SqlService, SqlRegistry, SqlReader{
 	public void read(SqlRegistry sqlRegistry) {
 		String contextPath = Sqlmap.class.getPackage().getName();
 		
-		try{
+		try {
 			JAXBContext context = JAXBContext.newInstance(contextPath);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			InputStream is = UserDao.class.getResourceAsStream(this.sqlmapFile);
 			Sqlmap sqlmap = (Sqlmap) unmarshaller.unmarshal(is);
 			
-			for(SqlType sql: sqlmap.getSql()){
+			for(SqlType sql: sqlmap.getSql()) {
 				sqlRegistry.registerSql(sql.getKey(),  sql.getValue());
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}

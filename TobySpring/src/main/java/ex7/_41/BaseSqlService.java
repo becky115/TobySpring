@@ -22,7 +22,7 @@ public class BaseSqlService implements SqlService{
 	}
 	
 	@PostConstruct
-	public void loadSql(){
+	public void loadSql() {
 		System.out.println("loadSql");
 		if(this.sqlReader != null)
 		this.sqlReader.read(this.sqlRegistry);
@@ -30,9 +30,9 @@ public class BaseSqlService implements SqlService{
 
 	@Override
 	public String getSql(String key) throws SqlRetrievalFailureException {
-		try{
+		try {
 			return this.sqlRegistry.findSql(key);
-		}catch(SqlNotFoundException e){
+		} catch (SqlNotFoundException e) {
 			throw new SqlRetrievalFailureException(e.getMessage());
 		}
 	}

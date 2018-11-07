@@ -17,17 +17,17 @@ import ex1.db.DConnctionMaker9;
 public class CountingDaoFactory31 {
 	
 	@Bean
-	public UserDao11 userDao(){
+	public UserDao11 userDao() {
 		return new UserDao11(connectionMaker());
 	}
 	
 	@Bean
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new CountingConnectionMaker30(realConnectionMaker());
 	}
 	
 	@Bean 
-	public ConnectionMaker8 realConnectionMaker(){
+	public ConnectionMaker8 realConnectionMaker() {
 		return new DConnctionMaker9();
 	}
 }

@@ -21,7 +21,7 @@ public class UserDaoTest19 {
 	
 //		System.out.println(context.getBean(UserDao11.class));
 		
-//		for(int i=0; i<context.getBeanDefinitionNames().length; i++){
+//		for(int i=0; i<context.getBeanDefinitionNames().length; i++) {
 //			String  a= context.getBeanDefinitionNames()[i];
 //			System.out.println("beanName: "+ a);
 //		}

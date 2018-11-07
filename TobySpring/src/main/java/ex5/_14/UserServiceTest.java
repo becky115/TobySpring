@@ -18,7 +18,7 @@ public class UserServiceTest {
 	UserService userService;
 	
 	@Test
-	public void bean(){
+	public void bean() {
 		System.out.println(this.userService);
 		assertThat(this.userService, is(notNullValue()));
 	}

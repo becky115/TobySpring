@@ -12,7 +12,7 @@ import ex1.domain.User;
 
 public class UserDao2 {
 	
-	public void add(User user) throws ClassNotFoundException, SQLException{
+	public void add(User user) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
@@ -27,7 +27,7 @@ public class UserDao2 {
 		c.close();
 	}
 	
-	public void delete(String id) throws ClassNotFoundException, SQLException{
+	public void delete(String id) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");
@@ -40,7 +40,7 @@ public class UserDao2 {
 		c.close();
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection c = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "ejlee");

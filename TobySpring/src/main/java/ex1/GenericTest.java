@@ -5,13 +5,13 @@ public class GenericTest<T> {
 	
 
 	
-	public T get(){
+	public T get() {
 		return t;
 	}
 	
 
 
-	public void qwer(){
+	public void qwer() {
 		System.out.println("qwer");
 	}
 	

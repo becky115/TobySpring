@@ -20,13 +20,13 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 	
-	public int getCount() throws SQLException{
+	public int getCount() throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 
-		try{
+		try {
 			c = dataSource.getConnection();
 			ps = c.prepareStatement("select count(*) from users");
 			
@@ -34,31 +34,31 @@ public class UserDao {
 			rs = ps.executeQuery();
 			rs.next();
 			return rs.getInt(1);
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
 			//42-48 만들어진 ResultSet을 닫아주는 기능.
 			//close는 만들어진 순서의 반대로 하는것이 원칙이다.
-			if(rs != null){
-				try{
+			if(rs != null) {
+				try {
 					rs.close();
-				}catch(SQLException e){ 
+				} catch (SQLException e) { 
 					
 				}
 			}
 			
-			if(ps != null){
-				try{
+			if(ps != null) {
+				try {
 					ps.close();
-				}catch(SQLException e){
+				} catch (SQLException e) {
 					
 				}
 			}
 			
-			if(c != null){
-				try{
+			if(c != null) {
+				try {
 					c.close();
-				}catch(SQLException e){
+				} catch (SQLException e) {
 					
 				}
 			}

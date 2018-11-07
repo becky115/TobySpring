@@ -20,13 +20,13 @@ public class CalcTest {
 	Calculator calculator;
 	String numFilePath;
 	
-	@Before public void setUp(){
+	@Before public void setUp() {
 		this.calculator = new Calculator();
 		this.numFilePath = getClass().getResource("numbers.txt").getPath();
 	}
 
 	@Test
-	public void concatenateStrings() throws IOException{
+	public void concatenateStrings() throws IOException {
 		assertThat(this.calculator.concatenate(this.numFilePath), is("1234"));
 	}
 }

@@ -24,13 +24,13 @@ public class UserDao {
 	}
 	
 	
-	public void add(User user) throws SQLException{
+	public void add(User user) throws SQLException {
 		
 		//add()메소드 내부에 선언된 로컬클래스다.
 		class AddStatement implements StatementStrategy{
 			User user;
 			
-			public AddStatement(User user){
+			public AddStatement(User user) {
 				this.user = user;
 			}
 
@@ -49,22 +49,22 @@ public class UserDao {
 		
 	}
 	
-	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException{
+	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 	
 			ps = stmt.makePreparedStatement(c);
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 			
 		}	
 		

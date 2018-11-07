@@ -6,7 +6,7 @@ import ex7.common.SqlNotFoundException;
 import ex7.common.SqlUpdateFailureException;
 import ex7.common.UpdatableSqlRegistry;
 
-public class MyUpdatableSqlRegistry implements UpdatableSqlRegistry{
+public class MyUpdatableSqlRegistry implements UpdatableSqlRegistry {
 
 	@Override
 	public void registerSql(String key, String sql) {

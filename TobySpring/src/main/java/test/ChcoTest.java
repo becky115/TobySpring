@@ -41,7 +41,7 @@ public class ChcoTest {
 	}
 	
 	
-	public static void aa(List<? extends Choco> chocos){
+	public static void aa(List<? extends Choco> chocos) {
 		System.out.println(chocos);
 	}
 }

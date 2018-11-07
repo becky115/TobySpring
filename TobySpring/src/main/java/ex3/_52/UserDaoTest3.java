@@ -28,7 +28,7 @@ public class UserDaoTest3 {
 	User user2;
 	User user3;
 	
-	@Before public void setUp() throws SQLException{
+	@Before public void setUp() throws SQLException {
 		this.dao = new UserDao2();
 		this.dao.setDataSource(new SingleConnectionDataSource("jdbc:mysql://192.168.1.128/test", "root", "ejlee", true));
 		user1 = new User();
@@ -51,7 +51,7 @@ public class UserDaoTest3 {
 	
 	
 	@Test
-	public void getAll(){
+	public void getAll() {
 		System.out.println(this.dao);
 		this.dao.deleteAll();
 		

@@ -9,18 +9,18 @@ public class UserService {
 	
 	UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 	
 	
-	public void upgradeLevels() throws Exception{
+	public void upgradeLevels() throws Exception {
 		// (1) DB Connection 생성
 		// (2) 트랜잭션 시작 
-		try{
+		try {
 			//(3) DAO 메소드 호출 
 			//(4)) 트랜잭션 커밋
-		}catch(Exception e){
+		} catch (Exception e) {
 			//(5) 트랜잭션 롤백 
 			throw e;
 		}finally {

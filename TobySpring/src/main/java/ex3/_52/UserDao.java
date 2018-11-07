@@ -23,11 +23,11 @@ public class UserDao {
 			
 	}
 
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public void deleteAll(){
+	public void deleteAll() {
 		this.jdbcTemplate.update("delete from users");
 	}
 
@@ -35,9 +35,9 @@ public class UserDao {
 	 * 리스트 3-53  getAll메소드
 	 * @return
 	 */
-	public List<User> getAll(){
+	public List<User> getAll() {
 		return this.jdbcTemplate.query("select * from users order by id", 
-			new RowMapper<User>(){
+			new RowMapper<User>() {
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 					User user = new User();
 					user.setId(rs.getString("id"));

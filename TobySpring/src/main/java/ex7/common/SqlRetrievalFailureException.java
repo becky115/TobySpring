@@ -10,7 +10,7 @@ public class SqlRetrievalFailureException extends RuntimeException {
 		super(message);
 	}
 	
-	public SqlRetrievalFailureException(String message, Throwable cause){
+	public SqlRetrievalFailureException(String message, Throwable cause) {
 		super(message, cause);
 	}
 	

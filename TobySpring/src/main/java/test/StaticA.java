@@ -4,7 +4,7 @@ public class StaticA {
 	public static String a = "test";
 
 	
-	public void test(){
+	public void test() {
 		StaticA test = new StaticA();
 		String q = StaticA.a;
 		System.out.println(q);

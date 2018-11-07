@@ -21,10 +21,10 @@ public class JtaTransaction {
 		tx.begin();
 		
 		Connection c = dataSource.getConnection(); //JNDI로 가져온 dataSource를 사용해야한다.
-		try{
+		try {
 			//데이터 액세스 코드
 			tx.commit();
-		}catch(Exception e){
+		} catch (Exception e) {
 			tx.rollback();
 			throw e;
 		}finally {

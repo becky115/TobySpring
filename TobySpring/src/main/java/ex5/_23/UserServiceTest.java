@@ -30,7 +30,7 @@ public class UserServiceTest {
 	List<User> users; //테스트픽스처 
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		users = Arrays.asList( //배열을 리스트로 만들어주는 편리한 메소드, 배열을 가변인자로 넣어주면 더욱 편리하다.
 				new User("bumjin", "박범진", "p1", Level.BASIC, 49, 0),
 				new User("joytouch", "강명성", "p2", Level.BASIC, 50, 0),
@@ -42,7 +42,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void upgradeLevels(){
+	public void upgradeLevels() {
 		userDao.deleteAll();
 		
 		for(User user: users) userDao.add(user);
@@ -64,7 +64,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void add(){
+	public void add() {
 		userDao.deleteAll();
 		
 		//GOLD레벨이 이미 지정된 User라면 레벨을 초기화하지 않아야 한다.

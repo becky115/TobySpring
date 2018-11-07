@@ -18,14 +18,14 @@ import ex1.dao.UserDao44;
 public class DaoFactory43_4 {
 	
 	@Bean
-	public UserDao44 userDao(){
+	public UserDao44 userDao() {
 		UserDao44 userDao = new UserDao44();
 		userDao.setDataSource(dataSource());
 		return userDao;
 	}
 	
 	@Bean
-	public DataSource dataSource(){
+	public DataSource dataSource() {
 		SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
 		dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
 		dataSource.setUrl("jdbc:mysql://localhost/test");

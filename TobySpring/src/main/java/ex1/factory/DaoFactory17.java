@@ -12,22 +12,22 @@ import ex1.db.DConnctionMaker9;
  *
  */
 public class DaoFactory17 {
-	public UserDao11 userDao(){
+	public UserDao11 userDao() {
 		UserDao11 userDao = new UserDao11(connectionMaker());
 		return userDao;
 	}
 	
-	public AccountDao accountDao(){
+	public AccountDao accountDao() {
 		AccountDao accountDao = new AccountDao(connectionMaker());
 		return accountDao;
 	}
 	
-	public MessageDao messageDao(){
+	public MessageDao messageDao() {
 		MessageDao messageDao = new MessageDao(connectionMaker());
 		return messageDao;
 	}
 	
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new DConnctionMaker9();
 	}
 }

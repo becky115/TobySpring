@@ -19,11 +19,11 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 	
-	public void deleteAll() throws SQLException{
+	public void deleteAll() throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 			
@@ -31,11 +31,11 @@ public class UserDao {
 			ps = makeStatement(c);
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 			
 		}	
 		

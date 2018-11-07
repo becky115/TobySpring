@@ -40,9 +40,9 @@ public class OxmSqlServiceOld implements SqlService {
 	}
 
 	public String getSql(String key) throws SqlRetrievalFailureException {
-		try{
+		try {
 			return this.sqlRegistry.findSql(key);
-		}catch(Exception e){
+		} catch (Exception e) {
 			throw new SqlRetrievalFailureException(e);
 		}
 	}

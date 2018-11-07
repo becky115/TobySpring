@@ -15,7 +15,7 @@ import ex1.db.ProductionDBConnectionMaker;
 public class DaoFactory29 {
 	
 	@Bean
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new ProductionDBConnectionMaker();
 	}
 }

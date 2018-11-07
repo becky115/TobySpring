@@ -13,14 +13,14 @@ import org.springframework.jdbc.core.RowMapper;
 public class UserDao2 {
 	private JdbcTemplate jdbcTemplate;
 
-	public void setDataSource(DataSource dataSource) throws SQLException{
+	public void setDataSource(DataSource dataSource) throws SQLException {
 		System.out.println("setDataSource");
 		System.out.println(dataSource.getConnection());
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		System.out.println(this.jdbcTemplate);
 	}
 	
-	public void deleteAll(){
+	public void deleteAll() {
 		System.out.println(this.jdbcTemplate);
 		this.jdbcTemplate.update("delete from users");
 	}
@@ -29,9 +29,9 @@ public class UserDao2 {
 	 * 리스트 3-53  getAll메소드
 	 * @return
 	 */
-	public List<User> getAll(){
+	public List<User> getAll() {
 		return this.jdbcTemplate.query("select * from users order by id", 
-			new RowMapper<User>(){
+			new RowMapper<User>() {
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 					User user = new User();
 					user.setId(rs.getString("id"));

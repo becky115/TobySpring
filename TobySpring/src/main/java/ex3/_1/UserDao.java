@@ -19,7 +19,7 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 	
-	public void deleteAll() throws SQLException{
+	public void deleteAll() throws SQLException {
 		Connection c = dataSource.getConnection();
 		
 		//26-27 예외가 발생하면 바로 메소드 실행이 중단된다.

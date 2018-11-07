@@ -25,7 +25,7 @@ public class UserDaoTest {
 	User user3;
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		this.user1 = new User("gyumee", "박성철", "springno1", Level.BASIC, 1, 0);
 		this.user2 = new User("leegw700", "이길원", "springno1", Level.SILVER, 55, 10);
 		this.user3 = new User("bumjin", "박범진", "springno3", Level.GOLD, 100, 40);
@@ -33,7 +33,7 @@ public class UserDaoTest {
 	
 	
 	@Test
-	public void addAndGet(){
+	public void addAndGet() {
 
 		
 		dao.deleteAll();

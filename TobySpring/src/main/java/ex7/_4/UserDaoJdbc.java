@@ -17,13 +17,13 @@ import ex7.User;
  * @author eunji
  *
  */
-public class UserDaoJdbc implements UserDao{
+public class UserDaoJdbc implements UserDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
 	private Map<String, String> sqlMap;
 	
-	private RowMapper<User> userMapper = new RowMapper<User>(){ //ResultSet
+	private RowMapper<User> userMapper = new RowMapper<User>() { //ResultSet
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			User user = new User();
 			user.setId(rs.getString("id"));
@@ -38,11 +38,11 @@ public class UserDaoJdbc implements UserDao{
 	
 	};
 	
-	public void setSqlMap(Map<String, String> sqlMap){
+	public void setSqlMap(Map<String, String> sqlMap) {
 		this.sqlMap = sqlMap;
 	}
 	
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	

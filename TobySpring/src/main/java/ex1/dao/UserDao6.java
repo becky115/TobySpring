@@ -21,7 +21,7 @@ public class UserDao6 {
 		simpleConnectionMaker7 = new SimpleConnectionMaker7();
 	}
 	
-	public void add(User user) throws ClassNotFoundException, SQLException{
+	public void add(User user) throws ClassNotFoundException, SQLException {
 		Connection c = simpleConnectionMaker7.makeNewConnection();
 		
 		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
@@ -35,7 +35,7 @@ public class UserDao6 {
 		c.close();
 	}
 
-	public void delete(String id) throws ClassNotFoundException, SQLException{
+	public void delete(String id) throws ClassNotFoundException, SQLException {
 		Connection c = simpleConnectionMaker7.makeNewConnection();
 		
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
@@ -47,7 +47,7 @@ public class UserDao6 {
 		c.close();
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = simpleConnectionMaker7.makeNewConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

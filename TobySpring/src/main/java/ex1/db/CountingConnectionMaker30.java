@@ -22,7 +22,7 @@ public class CountingConnectionMaker30 implements ConnectionMaker8{
 		return realConnectionMaker.makeConnection();
 	}
 	
-	public int getCounter(){
+	public int getCounter() {
 		return this.counter;
 	}
 

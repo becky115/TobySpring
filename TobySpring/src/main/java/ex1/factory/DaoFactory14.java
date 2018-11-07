@@ -13,7 +13,7 @@ import ex1.testCode.UserDaoTest12;
  */
 public class DaoFactory14 {
 	
-	public UserDao11 userDao(){
+	public UserDao11 userDao() {
 		ConnectionMaker8 connectionMaker8 = new DConnctionMaker9();
 		
 		UserDao11 userDao = new UserDao11(connectionMaker8);

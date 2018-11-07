@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class UltraSuperFastSqlRegistry implements SqlRegistry{
+public class UltraSuperFastSqlRegistry implements SqlRegistry {
 	
 	private Map<String, String> sqlMap = new HashMap<String, String>(); //SqlRegistry
 

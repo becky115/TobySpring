@@ -11,23 +11,23 @@ import java.io.IOException;
  */
 public class Calculator {
 
-	public Integer calcSum(String filePath) throws IOException{
+	public Integer calcSum(String filePath) throws IOException {
 		
 		BufferedReader br = null;
-		try{
+		try {
 			br = new BufferedReader(new FileReader(filePath)); 
 			Integer sum = 0;
 			String line = null;
-			while((line = br.readLine()) != null){
+			while((line = br.readLine()) != null) {
 				sum += Integer.valueOf(line);
 			}
 			return sum;
-		}catch(IOException e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			throw e;
 		}finally {
-			if(br != null){//BufferedReader 오브젝트가 생성되기 전에 예외가 발생할 수도 있으므로 반드시 null체크를 먼저해야한다.
-				try{
+			if(br != null) {//BufferedReader 오브젝트가 생성되기 전에 예외가 발생할 수도 있으므로 반드시 null체크를 먼저해야한다.
+				try {
 					br.close();
 				}catch (Exception e2) {
 					

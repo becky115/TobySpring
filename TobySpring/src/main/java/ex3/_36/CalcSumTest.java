@@ -20,16 +20,16 @@ public class CalcSumTest {
 	Calculator calculator;
 	String numFilePath;
 	
-	@Before public void setUp(){
+	@Before public void setUp() {
 		this.calculator = new Calculator();
 		this.numFilePath = getClass().getResource("numbers.txt").getPath();
 	}
 	
-	@Test public void sumOfNumbers() throws IOException{
+	@Test public void sumOfNumbers() throws IOException {
 		assertThat(this.calculator.calcSum(this.numFilePath), is(10));
 	}
 	
-	@Test public void multiplyOfNumbers() throws IOException{
+	@Test public void multiplyOfNumbers() throws IOException {
 		assertThat(this.calculator.calcMultiply(this.numFilePath), is(24));
 	}
 }

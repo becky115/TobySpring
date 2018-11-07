@@ -44,7 +44,7 @@ public class UserServiceTest {
 	List<User> users; //테스트픽스처 
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		//테스트에서는 가능한 한 경계 값을 사용하는것이 좋다.
 		users = Arrays.asList(
 				new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOGCOUNT_FOR_SILVER -1, 0),
@@ -57,7 +57,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void upgradeLevels() throws Exception{
+	public void upgradeLevels() throws Exception {
 		userDao.deleteAll();
 		
 		for(User user: users) userDao.add(user);
@@ -77,17 +77,17 @@ public class UserServiceTest {
 	 * @param user
 	 * @param upgraded 어떤레벨로 바뀔 것인가가 아니라, 다음레벨로 업그레이드 될 것인가 아닌가를 지정한다.
 	 */
-	private void checkLevelUpgraded(User user, boolean upgraded){
+	private void checkLevelUpgraded(User user, boolean upgraded) {
 		User userUpdate = userDao.get(user.getId());
-		if(upgraded){
+		if(upgraded) {
 			assertThat(userUpdate.getLevel(), is(user.getLevel().nextLevel()));
-		}else{
+		} else {
 			assertThat(userUpdate.getLevel(), is(user.getLevel()));
 		}
 	}
 	
 	@Test
-	public void add(){
+	public void add() {
 		userDao.deleteAll();
 		
 		//GOLD레벨이 이미 지정된 User라면 레벨을 초기화하지 않아야 한다.
@@ -108,7 +108,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void upgradeAllOrNothing() throws Exception{
+	public void upgradeAllOrNothing() throws Exception {
 		//예외를 발생시킬 네번째 사용자의 id를 넣어서 테스트용 UserService 대역 오브젝트를 생성한다.
 		UserService testUserService = new TestUserService(users.get(3).getId());
 		
@@ -119,26 +119,26 @@ public class UserServiceTest {
 		userDao.deleteAll();
 		for(User user: users) userDao.add(user);
 		
-		try{
+		try {
 			//TestUserService는 업그레이드 작업 중에 예외가 발생해야한다.
 			//정상 종료라면 문제가 있으니 실패
 			testUserService.upgradeLevels();
 			fail("TestUserServiceException expected");
-		}catch(TestUserServiceException e){
+		} catch (TestUserServiceException e) {
 			//TestUserService가 던져주는 예외를 잡아서 계속 진행되도록 한다. 그 외의 예외라면 테스트 실패
 		}
 		
 		checkLevelUpgraded(users.get(1), false);
 	}
 	
-	static class TestUserService extends UserService{
+	static class TestUserService extends UserService {
 		private String id;
 		
 		/**
 		 * 
 		 * @param id 예외를 발생시킬 User 오브젝트의 id를 지정할 수 있게 만든다.
 		 */
-		private TestUserService(String id){
+		private TestUserService(String id) {
 			this.id = id;
 		}
 		

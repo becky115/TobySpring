@@ -13,14 +13,14 @@ public class UserService {
 	
 	UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 	
 	public void upgradeLevels() {
 		List<User> users = userDao.getAll();
-		for(User user: users){
-			if(canUpgradeLevel(user)){
+		for(User user: users) {
+			if(canUpgradeLevel(user)) {
 				upgradeLevel(user);
 			}
 		}
@@ -33,7 +33,7 @@ public class UserService {
 
 	private boolean canUpgradeLevel(User user) {
 		Level currentLevel = user.getLevel();
-		switch(currentLevel){
+		switch(currentLevel) {
 			case BASIC: return (user.getLogin() >= MIN_LOGCOUNT_FOR_SILVER);
 			case SILVER: return (user.getRecommend() >= MIN_RECCOMEND_FOR_GOLD);
 			case GOLD: return false;

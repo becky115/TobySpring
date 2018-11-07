@@ -18,15 +18,15 @@ public class BaseSqlService implements SqlService{
 	}
 	
 	@PostConstruct
-	public void loadSql(){
+	public void loadSql() {
 		this.sqlReader.read(this.sqlRegistry);
 	}
 
 	@Override
 	public String getSql(String key) throws SqlRetrievalFailureException {
-		try{
+		try {
 			return this.sqlRegistry.findSql(key);
-		}catch(SqlNotFoundException e){
+		} catch (SqlNotFoundException e) {
 			throw new SqlRetrievalFailureException(e.getMessage());
 		}
 	}

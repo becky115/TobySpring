@@ -19,11 +19,11 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 	
-	public void add(User user) throws SQLException{
+	public void add(User user) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 			
@@ -33,11 +33,11 @@ public class UserDao {
 			ps.setString(3, user.getPassword());
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 			
 		}	
 		

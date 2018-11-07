@@ -25,7 +25,7 @@ public class UserDaoTest20 {
 	}
 	
 	@Test
-	public void b(){
+	public void b() {
 		
 	}
 }

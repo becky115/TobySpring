@@ -21,7 +21,7 @@ public class UserService {
 	
 	UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -30,7 +30,7 @@ public class UserService {
 	}
 	
 	
-	public void upgradeLevels() throws Exception{
+	public void upgradeLevels() throws Exception {
 		//트랜잭션 동기화 관리자를 이용해 동기화 작업을 초기화한다. 
 		TransactionSynchronizationManager.initSynchronization(); 
 		//DB커넥션을 생성하고 트랜잭션을 시작한다. 이후의 DAO작업은 모두 여기서 시작한 트랜잭션 안에서 진행된다.
@@ -38,15 +38,15 @@ public class UserService {
 		Connection c = DataSourceUtils.getConnection(dataSource);
 		c.setAutoCommit(false);
 		
-		try{
+		try {
 			List<User> users = userDao.getAll();
-			for(User user: users){
-				if(canUpgradeLevel(user)){
+			for(User user: users) {
+				if(canUpgradeLevel(user)) {
 					upgradeLevel(user);
 				}
 			}
 			c.commit();//정상적으로 작업을 마치면 트랜잭션 커밋
-		}catch(Exception e){//예외가 발생하면 롤백한다.
+		} catch (Exception e) {//예외가 발생하면 롤백한다.
 			System.out.println("예외 발생 roll back ");
 			c.rollback();
 			throw e;
@@ -67,7 +67,7 @@ public class UserService {
 
 	private boolean canUpgradeLevel(User user) {
 		Level currentLevel = user.getLevel();
-		switch(currentLevel){
+		switch(currentLevel) {
 			case BASIC: return (user.getLogin() >= MIN_LOGCOUNT_FOR_SILVER);
 			case SILVER: return (user.getRecommend() >= MIN_RECCOMEND_FOR_GOLD);
 			case GOLD: return false;

@@ -27,7 +27,7 @@ public class UserDao {
 	 * @param user //로컬(내부) 클래스의 코드에서 외부의 메소드 로컬 변수에 직접 접근할 수 있다.
 	 * @throws SQLException
 	 */
-	public void add(final User user) throws SQLException{
+	public void add(final User user) throws SQLException {
 
 		class AddStatement implements StatementStrategy{
 			public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
@@ -46,22 +46,22 @@ public class UserDao {
 		
 	}
 	
-	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException{
+	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 	
 			ps = stmt.makePreparedStatement(c);
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 			
 		}	
 		

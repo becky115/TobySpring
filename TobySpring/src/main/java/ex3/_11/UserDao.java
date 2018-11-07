@@ -25,22 +25,22 @@ public class UserDao {
 	 * @param stmt //클라이언트가 컨텍스트를 호출할 때 넘겨줄 전략 파라미터
 	 * @throws SQLException
 	 */
-	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException{
+	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 	
 			ps = stmt.makePreparedStatement(c);
 			
 			ps.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 			
 		}	
 		

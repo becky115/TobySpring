@@ -22,7 +22,7 @@ public class UserDao42 {
 		this.dataSource = dataSource;
 	}
 	
-	public User get(String id) throws SQLException{
+	public User get(String id) throws SQLException {
 		Connection c = dataSource.getConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

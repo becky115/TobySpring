@@ -49,13 +49,13 @@ public class UserDao {
 		);
 	}
 	
-	public User get(String id) throws SQLException{
+	public User get(String id) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		User user = null;
 		
-		try{
+		try {
 			
 			c = dataSource.getConnection();
 	
@@ -69,12 +69,12 @@ public class UserDao {
 			user.setId(rs.getString("id"));
 			user.setName(rs.getString("name"));
 			user.setPassword(rs.getString("password"));
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			throw e;
 		}finally {
-			if(rs != null){ try{ rs.close(); }catch(SQLException e){} }
-			if(ps != null){ try{ ps.close(); }catch(SQLException e){} }
-			if(c != null){try{c.close(); }catch(SQLException e){} }
+			if(rs != null) { try { rs.close(); } catch (SQLException e) {} }
+			if(ps != null) { try { ps.close(); } catch (SQLException e) {} }
+			if(c != null) {try {c.close(); } catch (SQLException e) {} }
 		}	
 		
 		return user;

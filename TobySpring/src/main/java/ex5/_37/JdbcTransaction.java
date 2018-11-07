@@ -18,7 +18,7 @@ public class JdbcTransaction {
 		
 		c.setAutoCommit(false); //트랜잭션 시작
 		
-		try{
+		try {
 			PreparedStatement st1 = c.prepareStatement("update users ...");
 			
 			st1.executeUpdate();
@@ -28,7 +28,7 @@ public class JdbcTransaction {
 			st2.executeUpdate();
 			
 			c.commit(); //트랜잭션 커밋
-		}catch(Exception e){
+		} catch (Exception e) {
 			c.rollback(); //트랜잭션 롤백 
 		}
 		

@@ -22,7 +22,7 @@ public class UserService {
 	
 	UserDao userDao;
 	
-	public void setUserDao(UserDao userDao){
+	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -31,23 +31,23 @@ public class UserService {
 	}
 	
 	
-	public void upgradeLevels(){
+	public void upgradeLevels() {
 		//Jdbc 트랜잭션 추상 오브젝트 생성
 		PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
 		
 		//트랜잭션 시작
 		TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 		
-		try{
+		try {
 			//트랜잭션 안에서 진행되는 작업 
 			List<User> users = userDao.getAll();
-			for(User user: users){
-				if(canUpgradeLevel(user)){
+			for(User user: users) {
+				if(canUpgradeLevel(user)) {
 					upgradeLevel(user);
 				}
 			}
 			transactionManager.commit(status);//트랜잭션 커밋
-		}catch(RuntimeException e){//예외가 발생하면 롤백한다.
+		} catch (RuntimeException e) {//예외가 발생하면 롤백한다.
 			System.out.println("예외 발생 roll back ");
 			transactionManager.rollback(status);//트랜잭션 커밋
 			throw e;
@@ -62,7 +62,7 @@ public class UserService {
 
 	private boolean canUpgradeLevel(User user) {
 		Level currentLevel = user.getLevel();
-		switch(currentLevel){
+		switch(currentLevel) {
 			case BASIC: return (user.getLogin() >= MIN_LOGCOUNT_FOR_SILVER);
 			case SILVER: return (user.getRecommend() >= MIN_RECCOMEND_FOR_GOLD);
 			case GOLD: return false;

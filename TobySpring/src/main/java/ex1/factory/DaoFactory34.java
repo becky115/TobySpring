@@ -16,14 +16,14 @@ import ex1.db.DConnctionMaker9;
 public class DaoFactory34 {
 	
 	@Bean
-	public UserDao33 userDao(){
+	public UserDao33 userDao() {
 		UserDao33 userDao = new UserDao33();
 		userDao.setConnectionMaker(connectionMaker());
 		return userDao;
 	}
 	
 	@Bean
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new DConnctionMaker9();
 	}
 }

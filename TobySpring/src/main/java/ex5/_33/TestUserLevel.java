@@ -11,7 +11,7 @@ public class TestUserLevel implements UserLevelUpgradePolicy{
 	
 	public boolean canUpgradeLevel(User user) {
 		Level currentLevel = user.getLevel();
-		switch(currentLevel){
+		switch(currentLevel) {
 			case BASIC: return (user.getLogin() >= MIN_LOGCOUNT_FOR_SILVER);
 			case SILVER: return (user.getRecommend() >= MIN_RECCOMEND_FOR_GOLD);
 			case GOLD: return false;

@@ -9,17 +9,17 @@ import ex3._33.BufferedReaderCallback;
 
 public class Calculator {
 	
-	public Integer fildReaderTemlate(String filePath, BufferedReaderCallback callback) throws IOException{
+	public Integer fildReaderTemlate(String filePath, BufferedReaderCallback callback) throws IOException {
 		BufferedReader br = null;
-		try{
+		try {
 			br = new BufferedReader(new FileReader(filePath)); 
 			return callback.doSomthingWithReader(br);
-		}catch(IOException e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			throw e;
 		}finally {
-			if(br != null){//BufferedReader 오브젝트가 생성되기 전에 예외가 발생할 수도 있으므로 반드시 null체크를 먼저해야한다.
-				try{
+			if(br != null) {//BufferedReader 오브젝트가 생성되기 전에 예외가 발생할 수도 있으므로 반드시 null체크를 먼저해야한다.
+				try {
 					br.close();
 				}catch (Exception e2) {
 					
@@ -35,12 +35,12 @@ public class Calculator {
 	 * @return
 	 * @throws IOException
 	 */
-	public Integer calcSum(String filePath) throws IOException{
+	public Integer calcSum(String filePath) throws IOException {
 		BufferedReaderCallback sumCallback = new BufferedReaderCallback() {
 			public Integer doSomthingWithReader(BufferedReader br) throws IOException {
 				Integer sum = 0;
 				String line = null;
-				while((line = br.readLine()) != null){
+				while((line = br.readLine()) != null) {
 					sum += Integer.valueOf(line);
 				}
 				return sum;
@@ -62,7 +62,7 @@ public class Calculator {
 			public Integer doSomthingWithReader(BufferedReader br) throws IOException {
 				Integer multiply = 1;
 				String line = null;
-				while((line = br.readLine()) != null){
+				while((line = br.readLine()) != null) {
 					multiply *= Integer.valueOf(line);
 				}
 				return multiply;

@@ -15,7 +15,7 @@ import org.junit.Test;
 public class JaxbTest {
 	
 	@Test
-	public void readSqlmap() throws JAXBException, IOException{
+	public void readSqlmap() throws JAXBException, IOException {
 		String contextPath = Sqlmap.class.getPackage().getName();
 		System.out.println(contextPath);
 

@@ -13,7 +13,7 @@ import ex1.domain.User;
  */
 public abstract class UserDao5 {
 	
-	public void add(User user) throws ClassNotFoundException, SQLException{
+	public void add(User user) throws ClassNotFoundException, SQLException {
 		
 		Connection c = getConnection();
 		
@@ -28,7 +28,7 @@ public abstract class UserDao5 {
 		c.close();
 	}
 
-	public void delete(String id) throws ClassNotFoundException, SQLException{
+	public void delete(String id) throws ClassNotFoundException, SQLException {
 		Connection c = getConnection();
 		
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
@@ -40,7 +40,7 @@ public abstract class UserDao5 {
 		c.close();
 	}
 	
-	protected User get(String id) throws ClassNotFoundException, SQLException{
+	protected User get(String id) throws ClassNotFoundException, SQLException {
 		System.out.println("UserDao5: "+ id);
 		Connection c = getConnection();
 		

@@ -12,7 +12,7 @@ import ex1.domain.User;
 
 public class UserDao4 {
 	
-	public void add(User user) throws ClassNotFoundException, SQLException{
+	public void add(User user) throws ClassNotFoundException, SQLException {
 		
 		Connection c = getConnection();
 		
@@ -27,7 +27,7 @@ public class UserDao4 {
 		c.close();
 	}
 
-	public void delete(String id) throws ClassNotFoundException, SQLException{
+	public void delete(String id) throws ClassNotFoundException, SQLException {
 		Connection c = getConnection();
 		
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
@@ -39,7 +39,7 @@ public class UserDao4 {
 		c.close();
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = getConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

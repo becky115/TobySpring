@@ -57,7 +57,7 @@ public class UserDaoTest4 {
 	}
 	
 	@Test
-	public void test() throws InterruptedException{
+	public void test() throws InterruptedException {
 		System.out.println("test");
 		Thread.sleep(5000);
 		a++;
@@ -65,7 +65,7 @@ public class UserDaoTest4 {
 	}
 	
 	@Test
-	public void test2(){
+	public void test2() {
 		System.out.println("test2");
 		a++;
 		System.out.println("a3 "+a);

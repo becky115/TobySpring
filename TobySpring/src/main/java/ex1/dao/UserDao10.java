@@ -23,7 +23,7 @@ public class UserDao10 {
 		connectionMaker8 = new DConnctionMaker9();
 	}
 	
-	public void add(User user) throws ClassNotFoundException, SQLException{
+	public void add(User user) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker8.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
@@ -37,7 +37,7 @@ public class UserDao10 {
 		c.close();
 	}
 
-	public void delete(String id) throws ClassNotFoundException, SQLException{
+	public void delete(String id) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker8.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("delete from users where id = ?");
@@ -49,7 +49,7 @@ public class UserDao10 {
 		c.close();
 	}
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker8.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

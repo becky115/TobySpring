@@ -13,17 +13,17 @@ import ex7.User;
  * @author eunji
  *
  */
-public class UserDaoJdbc implements UserDao{
+public class UserDaoJdbc implements UserDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
 	private String sqlAdd;
 	
-	public void setDataSource(DataSource dataSource){
+	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public void setSqlAdd(String sqlAdd){
+	public void setSqlAdd(String sqlAdd) {
 		this.sqlAdd = sqlAdd;
 	}
 

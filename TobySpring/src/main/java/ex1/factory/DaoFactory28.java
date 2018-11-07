@@ -15,7 +15,7 @@ import ex1.db.LocalDBConnectionMaker;
 public class DaoFactory28 {
 	
 	@Bean
-	public ConnectionMaker8 connectionMaker(){
+	public ConnectionMaker8 connectionMaker() {
 		return new LocalDBConnectionMaker();
 	}
 }

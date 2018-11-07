@@ -22,7 +22,7 @@ public class UserDao33 {
 	}
 	
 	
-	public User get(String id) throws ClassNotFoundException, SQLException{
+	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = connectionMaker.makeConnection();
 		
 		PreparedStatement ps = c.prepareStatement("select * from users where id = ?");

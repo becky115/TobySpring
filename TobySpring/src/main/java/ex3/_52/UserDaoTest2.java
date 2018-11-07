@@ -28,7 +28,7 @@ public class UserDaoTest2 {
 	User user2;
 	User user3;
 	
-	@Before public void setUp(){
+	@Before public void setUp() {
 
 		user1 = new User();
 		user1.setId("gyumee");
@@ -50,7 +50,7 @@ public class UserDaoTest2 {
 	
 	
 	@Test
-	public void getAll(){
+	public void getAll() {
 		System.out.println(this.dao);
 		this.dao.deleteAll();
 		
