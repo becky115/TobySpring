@@ -1,13 +1,24 @@
-package ex6._12;
+package ex6._14;
 
 import static ex5._31.UserService.MIN_LOGCOUNT_FOR_SILVER;
 import static ex5._31.UserService.MIN_RECCOMEND_FOR_GOLD;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.any;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -15,6 +26,7 @@ import javax.sql.DataSource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -23,8 +35,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 
+
+import ex6._12.UserDao;
 import ex5._50.Level;
 import ex6._1.User;
+import ex6._12.UserServiceImpl;
+import ex6._12.UserServiceTx;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/ex6/_12/applicationContext.xml")
@@ -87,9 +103,10 @@ public class UserServiceTest {
 	}
 	*/
 	
+	/*
 	@Test
 	public void upgradeLevels() throws Exception {
-		UserServiceImpl userServiceImpl  = new UserServiceImpl(); //고립된 테스트에서는 테스트 대상 오브젝트를 직접 생성하면 됨
+		UserServiceImpl userServiceImpl = new UserServiceImpl(); //고립된 테스트에서는 테스트 대상 오브젝트를 직접 생성하면 됨
 		
 		// 목 오브젝트로 만든 UserDao를 직접 DI해줌
 		MockUserDao mockUserDao = new MockUserDao(this.users);
@@ -116,6 +133,41 @@ public class UserServiceTest {
 		assertThat(updated.getId(), is(expectedId));
 		assertThat(updated.getLevel(), is(expectedLevel));
 	}
+	
+	*/
+	
+	@Test
+	public void mockUpgradeLevels() throws Exception {
+		UserServiceImpl userServiceImpl = new UserServiceImpl();
+		
+		UserDao mockUserDao = mock(UserDao.class);
+		when(mockUserDao.getAll()).thenReturn(this.users);
+		userServiceImpl.setUserDao(mockUserDao);
+		
+		MailSender mockMailSender = mock(MailSender.class);
+		userServiceImpl.setMailSender(mockMailSender);
+		
+		userServiceImpl.upgradeLevels();
+		
+		
+		// 목 오브젝트가 제공하는 검증 기능을 통해서 어떤 메소드가 몇번 호출됫는지, 파라미터 무엇인지 확인할 수 있음
+		verify(mockUserDao, times(2)).update(any(User.class));
+		verify(mockUserDao, times(2)).update(any(User.class));
+		verify(mockUserDao).update(users.get(1)); // users.get(1) 을 파라미터로 update()가 호출됬는
+		assertThat(users.get(1).getLevel(), is(Level.SILVER));
+		verify(mockUserDao).update(users.get(3));
+		assertThat(users.get(3).getLevel(), is(Level.GOLD));
+		
+		ArgumentCaptor<SimpleMailMessage> mailMessageArg = ArgumentCaptor.forClass(SimpleMailMessage.class);
+		
+		verify(mockMailSender, times(2)).send(mailMessageArg.capture());//  파라미터를 정밀하게 검사하기 위해 캡쳐할 수도 있음
+		List<SimpleMailMessage> mailMessages = mailMessageArg.getAllValues();
+		System.out.println(mailMessages);
+		assertThat(mailMessages.get(0).getTo()[0], is(users.get(1).getEmail()));
+		assertThat(mailMessages.get(1).getTo()[0], is(users.get(3).getEmail()));
+	
+	}
+	
 
 	/**
 	 * 
@@ -212,11 +264,13 @@ public class UserServiceTest {
 			return requests;
 		}
 
+		@Override
 		public void send(SimpleMailMessage mailMessage) throws MailException {
 			System.out.println("mailMessage.getTo()[0]: " + mailMessage.getTo()[0]);
 			requests.add(mailMessage.getTo()[0]); //전송 요청을 받은 이메일 주소를 저장해둔다. 간단하게 첫 번째 수신자 메일 주소만 저장했다 .
 		}
 
+		@Override
 		public void send(SimpleMailMessage... simpleMessages) throws MailException {
 		
 		}
@@ -257,4 +311,21 @@ public class UserServiceTest {
 	}
 
 
+	
+	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		try {
+			Object test = "ee";
+			Method lengthMethod = String.class.getMethod("length");
+			int length = (int) lengthMethod.invoke(test);
+			System.out.println(length);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
