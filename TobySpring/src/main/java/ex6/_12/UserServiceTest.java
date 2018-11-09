@@ -19,20 +19,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import ex5._50.Level;
 import ex6._1.User;
-import ex6._1.UserDao;
-import ex6._6.UserServiceImpl;
-import ex6._6.UserServiceTx;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="/ex6/_6/applicationContext.xml")
+@ContextConfiguration(locations="/ex6/_12/applicationContext.xml")
 public class UserServiceTest {
 	
 	@Autowired
@@ -178,7 +173,7 @@ public class UserServiceTest {
 			txUserService.upgradeLevels();
 			fail("TestUserServiceException expected");
 		} catch (TestUserServiceException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			//TestUserService가 던져주는 예외를 잡아서 계속 진행되도록 한다. 그 외의 예외라면 테스트 실패
 		}
 		
@@ -221,7 +216,6 @@ public class UserServiceTest {
 		public void send(SimpleMailMessage mailMessage) throws MailException {
 			System.out.println("mailMessage.getTo()[0]: " + mailMessage.getTo()[0]);
 			requests.add(mailMessage.getTo()[0]); //전송 요청을 받은 이메일 주소를 저장해둔다. 간단하게 첫 번째 수신자 메일 주소만 저장했다 .
-			
 		}
 
 		@Override

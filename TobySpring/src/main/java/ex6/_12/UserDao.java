@@ -1,6 +1,8 @@
-package ex6._1;
+package ex6._12;
 
 import java.util.List;
+
+import ex6._1.User;
 
 public interface UserDao {
 	
@@ -9,5 +11,5 @@ public interface UserDao {
 	List<User> getAll();
 	void deleteAll();
 	int getCount();
-	public int update(User user);
+	public void update(User user);
 }
