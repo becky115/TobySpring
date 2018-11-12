@@ -14,11 +14,18 @@
 	
 	<bean id="mailSender" class="ex5._57.DummyMailSender"/>
 	
+	<bean id="userService" class="ex6._35.TxProxyFactoryBean">
+		<property name="target" ref="userServiceImpl"/>
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="pattern" value="upgradeLevels"/>
+		<property name="serviceInterface" value="ex6._12.UserService"/>
+	</bean>
+	
 	<bean id="userServiceImpl" class="ex6._12.UserServiceImpl">
 		<property name="userDao" ref="userDao"/>
 		<property name="mailSender" ref="mailSender"/>
 	</bean>
-
+	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource"  ref="dataSource"/>
 	</bean>
@@ -26,8 +33,5 @@
 	<bean id="userDao" class="ex6._12.UserDaoJdbc">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
-	
-
 	
 </beans>
