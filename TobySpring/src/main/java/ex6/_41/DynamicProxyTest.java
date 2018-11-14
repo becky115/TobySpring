@@ -9,6 +9,8 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.NameMatchMethodPointcut;
 
 import ex6._18.Hello;
 import ex6._18.HelloTarget;
@@ -20,7 +22,7 @@ public class DynamicProxyTest {
 	public void test() {
 		Hello proxiedHello = (Hello) Proxy.newProxyInstance(
 				getClass().getClassLoader(), // 동적으로 생성되는 다이내믹 프록시 클래스의 로딩에 사용될 클래스 로더  
-				new Class[] { Hello.class }, // 구현할인터페이스 
+				new Class[] { Hello.class }, // 구현할 인터페이스 
 				new UppercaseHandler(new HelloTarget())); // 부가기능과 위임 코드를 담은 InvocationHandler
 		
 		assertThat(proxiedHello.sayHello("Toby"), is("HELLO TOBY"));
@@ -34,9 +36,32 @@ public class DynamicProxyTest {
 		pfBean.addAdvice(new UppercaseAdvice());
 		
 		Hello proxiedHello = (Hello) pfBean.getObject();
+		
 		assertThat(proxiedHello.sayHello("Toby"), is("HELLO TOBY"));
 		assertThat(proxiedHello.sayHi("Toby"), is("HI TOBY"));
 		assertThat(proxiedHello.sayThankYou("Toby"), is("THANK YOU TOBY"));
+	}
+	
+	
+	/**
+	 * 6-42 포인트컷까지 적용한 ProxyFactroyBean
+	 */
+	@Test
+	public void pointcutAdvisor() {
+		ProxyFactoryBean pfBean = new ProxyFactoryBean();
+		pfBean.setTarget(new HelloTarget());
+		
+		NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+		pointcut.setMappedName("sayH*");
+		
+		pfBean.addAdvisor(new DefaultPointcutAdvisor(pointcut, new UppercaseAdvice()));
+
+		Hello proxiedHello = (Hello) pfBean.getObject();
+		
+		assertThat(proxiedHello.sayHello("Toby"), is("HELLO TOBY"));
+		assertThat(proxiedHello.sayHi("Toby"), is("HI TOBY"));
+		assertThat(proxiedHello.sayThankYou("Toby"), is("Thank You Toby"));
+		
 	}
 	
 	static class UppercaseAdvice implements MethodInterceptor {
