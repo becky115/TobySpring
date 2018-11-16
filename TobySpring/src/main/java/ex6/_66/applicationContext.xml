@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="qwer1234"/>
+	
+	</bean>
+	
+	<bean id="mailSender" class="ex5._57.DummyMailSender"/>
+	
+	<bean id="userService" class="ex6._12.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+		<property name="mailSender" ref="mailSender"/>
+	</bean>
+	
+	<!--  & static 멤버 class
+			parent 프로퍼티 정의를 포함해서 userService 빈의 설정 상속받음
+	 -->
+	<bean id="testUserService" class="ex6._66.UserServiceTest$TestUserServiceImpl"
+		parent="userService"/>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource"  ref="dataSource"/>
+	</bean>
+	<bean id="transactionAdvice" class="ex6._43.TransactionAdvice">
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>
+	
+	<aop:config>
+		<!-- <aop:pointcut id="transactionPointcut"
+								expression="execution(* *..*ServiceImpl.upgrade*(..))" />
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/> -->
+		<aop:advisor advice-ref="transactionAdvice" pointcut="execution(* *..*ServiceImpl.upgrade*(..))"/>
+	</aop:config>
+	
+		
+<!-- 	
+<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice"/>
+		<property name="pointcut" ref="transactionPointcut"/>
+	</bean>
+
+	<bean id="transactionPointcut" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
+		<property name="expression" value="execution(* *..*ServiceImpl.upgrade*(..))"/>
+	</bean> -->
+
+	<bean id="userDao" class="ex6._12.UserDaoJdbc">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+</beans>
